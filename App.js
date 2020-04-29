@@ -8,7 +8,7 @@ import {
   GoogleAnalyticsSettings,
 } from 'react-native-google-analytics-bridge';
 import LoginScreen from './src/scenes/Login';
-import Realm from 'realm';
+// import Realm from 'realm';
 import HomeScreen from './src/scenes/Home';
 import MyProfileScreen from './src/scenes/MyProfile';
 import MoreScreen from './src/scenes/More';
@@ -45,18 +45,18 @@ let tracker = new GoogleAnalyticsTracker('G-LC2MDJK4YT');
 export default class App extends Component {
   constructor(props) {
     super(props);
-    realm = new Realm({
-      path: 'UserDatabase.realm',
-      schema: [
-        {
-          name: 'user_details',
-          properties: {
-            user_name: 'string',
-            user_password: 'string',
-          },
-        },
-      ],
-    });
+    // realm = new Realm({
+    //   path: 'UserDatabase.realm',
+    //   schema: [
+    //     {
+    //       name: 'user_details',
+    //       properties: {
+    //         user_name: 'string',
+    //         user_password: 'string',
+    //       },
+    //     },
+    //   ],
+    // });
     // YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
     // YellowBox.ignoreWarnings(['Setting a timer']);
     // YellowBox.ignoreWarnings(['Warning: componentWillReceiveProps has been renamed']);
