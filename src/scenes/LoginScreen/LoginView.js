@@ -66,9 +66,12 @@ export default class LoginView extends Component {
         {this.renderLoginTitle()}
         {this.renderValidationForm()}
         {this.renderSubmitButton()}
+        
       </View>
     );
   }
+
+
 
   renderLoginTitle() {
     return (
@@ -186,6 +189,11 @@ export default class LoginView extends Component {
             <Animated.View
               style={[styles.circle, { transform: [{ scale: changeScale }] }]}
             />
+            <View style={{ paddingTop: 10, alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+              <TouchableOpacity onPress={() => Actions.register()}>
+                <Text>I want to register</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </Animated.View>
       </KeyboardAvoidingView>

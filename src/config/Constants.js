@@ -30,11 +30,20 @@ export default {
 
   LABEL_USERNAME:'UserName',
   TEXT_INPUT_USERNAME:'loginInputName',
-  ERROR_TEXT_INPUT_USERNAME:'Please enter your username/email',
+  ERROR_TEXT_INPUT_USERNAME:'Please enter your username',
   LABEL_PASSWORD:'Password',
   TEXT_INPUT_PASSWORD:'passwordInput',
   ERROR_TEXT_INPUT_PASSWORD:'Please enter password',
-  LOGIN_BUTTON_TEXT:'Login'
-
-
+  LOGIN_BUTTON_TEXT:'Login',
+  REGISTER_BUTTON_TEXT:'Register',
+  LABEL_NAME:'Name',
+  TEXT_INPUT_NAME:'loginInputName',
+  ERROR_TEXT_INPUT_NAME:'please enter name',
+  LABEL_EMAIL:'Email',
+  TEXT_INPUT_EMAIL:'loginInputEmail',
+  ERROR_TEXT_INPUT_EMAIL:'Please enter your email',
+  TEXT_INPUT_CONFIRM_PASSWORD:'passwordInput',
+  ERROR_TEXT_INPUT_CONFIRM_PASSWORD:'Please enter confirm password',
+  LABEL_CONFIRM_PASSWORD:'Confirm Password',
+  LABEL_TERMS_CONDITION:'accept Terms and Conditions',
 };
