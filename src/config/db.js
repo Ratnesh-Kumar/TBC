@@ -1,12 +1,12 @@
 import Firebase from 'firebase';
 let config = {
-  apiKey: 'AIzaSyAl7XaQIIDH1P2DS0dpK30PXhGU3X4zjxc',
+  apiKey: 'AIzaSyAanoRbZKRC7PJZbGgqoLPNnM5ty5HB4yY',
   authDomain: 'tbccrecords.firebaseapp.com',
-  databaseURL: 'https://tbccrecords.firebaseio.com',
-  projectId: 'tbccrecords',
-  storageBucket: 'tbccrecords.appspot.com',
+  databaseURL: 'https://rn-tbc.firebaseio.com',
+  projectId: 'rn-tbc',
+  storageBucket: 'rn-tbc.appspot.com',
   messagingSenderId: '779958846678',
-  appId: '1:779958846678:web:20616ec0a8264110c9f577',
+  appId: '1:235399015867:ios:680c24c6db961d6c0a689e',
   measurementId: 'G-ZEJ2V66817',
 };
 let app = Firebase.initializeApp(config);

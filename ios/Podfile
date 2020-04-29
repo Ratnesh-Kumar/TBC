@@ -1,3 +1,7 @@
+# You Podfile should look similar to this file. React Native currently does not support use_frameworks!
+source 'https://github.com/CocoaPods/Specs.git'
+
+
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
@@ -34,24 +38,12 @@ target 'TBCCApp' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
+
 
   pod 'react-native-google-analytics-bridge', :path => '../node_modules/react-native-google-analytics-bridge'
 
-  target 'TBCCAppTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 
   use_native_modules!
 end
 
-target 'TBCCApp-tvOS' do
-  # Pods for TBCCApp-tvOS
-
-  target 'TBCCApp-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end

@@ -1,5 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
-import Constants from '../../Config/Constants';
+var Constants = require('../../Config/Constants');
 
 const {width, height} = Dimensions.get('window');
 
