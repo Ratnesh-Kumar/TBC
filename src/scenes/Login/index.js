@@ -252,6 +252,11 @@ export default class LoginView extends Component {
             {commonConstants.LOGIN_BUTTON_TEXT}
           </Text>
         </TouchableOpacity>
+        <View style={loginStyle.loginRegisterButonView}>
+              <TouchableOpacity onPress={() => Actions.register()}>
+                <Text style={loginStyle.loginRegisterButonText}>I want to register</Text>
+              </TouchableOpacity>
+            </View>
       </View>
     );
   }

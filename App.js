@@ -8,6 +8,8 @@ import {
   GoogleAnalyticsSettings,
 } from 'react-native-google-analytics-bridge';
 import LoginScreen from './src/scenes/Login';
+import RegisterScreen from './src/scenes/Register';
+import RecoverScreen from './src/scenes/RecoverAccount';
 import Realm from 'realm';
 import HomeScreen from './src/scenes/Home';
 import MyProfileScreen from './src/scenes/MyProfile';
@@ -86,6 +88,21 @@ export default class App extends Component {
             title="login"
             duration={0}
           />
+          <Scene
+            key="register"
+            type={ActionConst.RESET}
+            component={RegisterScreen}
+            title="register"
+            duration={0}
+          />
+          <Scene
+            key="recover"
+            type={ActionConst.RESET}
+            component={RecoverScreen}
+            title="recover"
+            duration={0}
+          />
+
           {this.renderTabbar()}
         </Scene>
       </Router>
