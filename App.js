@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Router, Scene, ActionConst } from 'react-native-router-flux';
 import splashscreen from './src/scenes/Splash';
+import crashlytics from 'react-native-firebase/crashlytics';
 
 import {
   GoogleAnalyticsTracker,
@@ -17,24 +18,23 @@ import SettingsScreen from './src/scenes/Settings';
 import FBaseWrite from './src/scenes/FirebaseRW/FBaseWrite';
 import FBaseReadItems from './src/scenes/FirebaseRW/FBaseReadItems';
 import TabIcon from './src/components/TabIcon';
-
 import {
   StyleSheet
 } from 'react-native'
 console.disableYellowBox = true;
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
-    height:70
+    flex: 1,
+    height: 70
   },
 
   tabBarStyle: {
-    borderTopWidth:1,
-    borderTopColor:'transparent',
-    height:70,
+    borderTopWidth: 1,
+    borderTopColor: 'transparent',
+    height: 70,
   },
   tabBarSelectedItemStyle: {
-    height:70
+    height: 70
   },
 });
 
@@ -61,7 +61,7 @@ export default class App extends Component {
     // YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
     // YellowBox.ignoreWarnings(['Setting a timer']);
     // YellowBox.ignoreWarnings(['Warning: componentWillReceiveProps has been renamed']);
-
+    crashlytics().log('App Launched...');
   }
   componentDidMount() {
     tracker.trackScreenView('Home Screen');
@@ -100,12 +100,12 @@ export default class App extends Component {
         key="tabbar"
         tabs={true}
         navTransparent={true}
-        tabBarStyle={styles.tabBarStyle} tabBarSelectedItemStyle={styles.tabBarStyle}  hideNavBar={true} showLabel={false}>
+        tabBarStyle={styles.tabBarStyle} tabBarSelectedItemStyle={styles.tabBarStyle} hideNavBar={true} showLabel={false}>
         {/* Tab and it's scenes */}
-        
+
 
         {/* Tab and it's scenes */}
-        <Scene key="myProfileTab" title="Explore" icon={TabIcon}  resource={require('./src/public/images/Search_Icon.png')} hideNavBar>
+        <Scene key="myProfileTab" title="Explore" icon={TabIcon} resource={require('./src/public/images/Search_Icon.png')} hideNavBar>
           <Scene key="myProfile" component={MyProfileScreen} title="Blue" hideNavBar />
           <Scene key="fbai" component={FBaseWrite} title="FB Add Item" />
           <Scene key="fbri" component={FBaseReadItems} title="FB Read" />
@@ -124,7 +124,7 @@ export default class App extends Component {
         </Scene>
 
         {/* Tab and it's scenes */}
-        <Scene key="plusTab" title="Plus" icon={TabIcon}  resource={require('./src/public/images/tabbar_more.png')}  hideNavBar>
+        <Scene key="plusTab" title="Plus" icon={TabIcon} resource={require('./src/public/images/tabbar_more.png')} hideNavBar>
           <Scene key="more" component={MoreScreen} title="More" />
         </Scene>
       </Scene>

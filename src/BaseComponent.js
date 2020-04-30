@@ -7,14 +7,6 @@ export default class BaseComponent extends Component {
         
     }
 
-    setUserIdFlurry(userId)
-    {
-        
-    }
-    logEventFlurry(eventName) {
-        
-    }
-
     componentDidMount() {
         
     }
