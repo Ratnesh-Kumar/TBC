@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import { fetchJsonGET, fetchJsonPOST } from '../../services/FetchData'
 import BaseComponent from '../../BaseComponent';
 import SearchBar from '../../components/homeSearchBar';
+import SquareBox from './homeTopSquareBox'
 var constants = require('../../config/Constants')
 var colorConstants = require('../../config/colorConstant')
 var homeConstants = require('./homeConstants');
@@ -42,11 +43,13 @@ export default class HomeScreen extends BaseComponent {
     render() {
         return (
             <View style={homeStyle.container}>
-                {/* <Header isleftArrowDisplay={false} title={homeConstants.HOME_SCREEN} /> */}
                 <SearchBar/>
                 <View style={homeStyle.viewContainer}>
-                <Text style={homeStyle.welcome}>{homeConstants.HOME_SCREEN}</Text>
-                    {/* {this.renderFlatList()} */}
+                    <View style={{flexDirection:'row'}}>
+                        <SquareBox title={homeConstants.SQUARE_BOX_ONE_TITLE}/>
+                        <SquareBox title={homeConstants.SQUARE_BOX_TWO_TITLE}/>
+                        <SquareBox title={homeConstants.SQUARE_BOX_THREE_TITLE}/>
+                    </View>
                 </View>
             </View>
         );
