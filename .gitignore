@@ -62,4 +62,3 @@ ios/Pods/GoogleMaps
 *.hprof
 *.keystore
 
-package-lock.json
