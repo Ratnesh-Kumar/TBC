@@ -9,6 +9,8 @@ export default (styles = StyleSheet.create({
     backgroundColor: colorConstants.GRAY_LIGHT_COLOR,
   },
   viewContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
     flex: 1
   },
   seperateLine: {
@@ -36,5 +38,11 @@ export default (styles = StyleSheet.create({
   },
   renderItemText: {
     width: 60
-  }
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+    color: 'black',
+  },
 }));
