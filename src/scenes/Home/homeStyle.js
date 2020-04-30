@@ -6,11 +6,9 @@ var colorConstants = require('../../config/colorConstant')
 export default (styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colorConstants.GRAY_LIGHT_COLOR,
+    backgroundColor: colorConstants.WHITE_COLOR,
   },
   viewContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
     flex: 1
   },
   seperateLine: {
