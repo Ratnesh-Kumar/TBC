@@ -1,1 +1,0 @@
-export const SETTINGS_SCREEN = "Settings Screen";
