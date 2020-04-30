@@ -3,34 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>235399015867-nja66t5c5im5tclfr802pvgpa2jktp5e.apps.googleusercontent.com</string>
+	<string>1002284040958-th2j78jdf4m3r08ibtf20c4a2tn7750f.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.235399015867-nja66t5c5im5tclfr802pvgpa2jktp5e</string>
+	<string>com.googleusercontent.apps.1002284040958-th2j78jdf4m3r08ibtf20c4a2tn7750f</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBOsq62uWNaq372mObpr4eMPggtNXACGeo</string>
+	<string>AIzaSyAmzE1sSD7q1nLXiYT0KWgzED-IeLiL5ls</string>
 	<key>GCM_SENDER_ID</key>
-	<string>235399015867</string>
+	<string>1002284040958</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.TBC.RNAPP</string>
 	<key>PROJECT_ID</key>
-	<string>rn-tbc</string>
+	<string>albya-a3c55</string>
 	<key>STORAGE_BUCKET</key>
-	<string>rn-tbc.appspot.com</string>
+	<string>albya-a3c55.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:235399015867:ios:680c24c6db961d6c0a689e</string>
+	<string>1:1002284040958:ios:ec8eae200e639c30cb9baf</string>
 	<key>DATABASE_URL</key>
-	<string>https://rn-tbc.firebaseio.com</string>
+	<string>https://albya-a3c55.firebaseio.com</string>
 </dict>
 </plist>
