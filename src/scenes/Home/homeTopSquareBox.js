@@ -20,7 +20,10 @@ export default class HomeSearchBar extends Component {
 
     render() {
         return (
-            <View style={{ height: SCREEN_WIDTH / 3 - 30, width: SCREEN_WIDTH / 3 - 20, backgroundColor: colorConstants.GRAY_LIGHT_COLOR, margin: 10 }}>
+            <TouchableOpacity onPress={()=>{
+                this.props.squareBoxClicked();
+            }}
+            style={{ height: SCREEN_WIDTH / 3 - 30, width: SCREEN_WIDTH / 3 - 20, backgroundColor: colorConstants.GRAY_LIGHT_COLOR, margin: 10 }}>
                 <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
                     <Image source={require('../../public/images/thumbnail_placeholder.png')}
                         style={{ height: 40, width: 40, resizeMode: 'contain' }} />
@@ -31,7 +34,7 @@ export default class HomeSearchBar extends Component {
                         style={{position:'absolute', bottom:0, left: 0,righ:0, width: SCREEN_WIDTH / 3 - 20, justifyContent:'center', alignItems:'center'}}>
                         <Text style={{fontSize: 10, margin: 5}}>{this.props.title}</Text>
                     </CardView>
-            </View>
+            </TouchableOpacity>
         );
     }
 }
