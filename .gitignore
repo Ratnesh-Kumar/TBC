@@ -24,23 +24,26 @@ project.xcworkspace
 
 # Android/IntelliJ
 #
+.gradle/
 build/
 .idea
-.gradle
+
 local.properties
 *.iml
 
 # node.js
 #
+
 node_modules/
 npm-debug.log
 yarn-error.log
 package-lock.json
-
 # BUCK
 buck-out/
 \.buckd/
-
+*.keystore
+EnvironmentDefinition.js
+.env
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
@@ -52,13 +55,12 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 
-# CocoaPods
-/ios/Pods/
 
-Podfile.lock
-package-lock.json
-ios/Pods/GoogleMaps
+ios/Pilgrim/PilgrimManager.swift
+.env
+ios/Info.plist
 
-*.hprof
-*.keystore
-
+#Android
+*.bin
+*.lock
+*.iml

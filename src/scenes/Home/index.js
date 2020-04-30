@@ -43,7 +43,8 @@ export default class HomeScreen extends BaseComponent {
             <View style={homeStyle.container}>
                 <Header isleftArrowDisplay={false} title={homeConstants.HOME_SCREEN} />
                 <View style={homeStyle.viewContainer}>
-                    {this.renderFlatList()}
+                <Text style={homeStyle.welcome}>{homeConstants.HOME_SCREEN}</Text>
+                    {/* {this.renderFlatList()} */}
                 </View>
             </View>
         );
