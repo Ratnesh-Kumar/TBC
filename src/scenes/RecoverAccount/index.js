@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import TextInputMaterial from '../../components/textInputMaterial';
 import PropTypes from 'prop-types';
+import Header from '../../components/Header';
 import { Actions } from 'react-native-router-flux';
 import recoverStyle from './recoverAccountStyle';
 var commonConstants = require('../../config/Constants');
@@ -23,6 +24,7 @@ export default class RecoverAccountView extends Component {
     render() {
         return (
             <View style={recoverStyle.renderContainer}>
+                {this.renderHeaderView()}
                 {this.renderRecoverAccountTitle()}
                 {this.renderRecoverForm()}
                 {this.renderSubmitButton()}
@@ -30,10 +32,18 @@ export default class RecoverAccountView extends Component {
             </View>
         );
     }
+    renderHeaderView() {
+        let title = "Recover account";
+        
+        return (
+          <Header isleftArrowDisplay={false} title={title}  />
+        );
+      }
+
     renderRecoverAccountTitle() {
         return (
             <View style={recoverStyle.registerTitleView}>
-                <Text style={recoverStyle.registerTitleText}>{'Recover Account'}</Text>
+                <Text style={recoverStyle.registerTitleText}>{'Recover Account Text'}</Text>
             </View>
         )
     }

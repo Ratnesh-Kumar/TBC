@@ -10,9 +10,10 @@ import TextInputMaterial from '../../components/textInputMaterial';
 import PropTypes from 'prop-types';
 import styles from './registerStyle';
 import { Actions } from 'react-native-router-flux';
-
+import Header from '../../components/Header';
 import {  Switch } from 'native-base';
 import registerStyle from './registerStyle';
+import { ScrollView } from 'react-native-gesture-handler';
 
 var Constants = require('../../config/Constants')
 var colorConstant = require('../../config/colorConstant')
@@ -39,19 +40,27 @@ export default class RegisterView extends Component {
 
   render() {
     return (
-      <View style={registerStyle.renderContainer}>
+      <ScrollView scrollEnabled={false} overScrollMode={'always'} keyboardShouldPersistTaps={'handled'} style={registerStyle.renderContainer}>
+        {this.renderHeaderView()}
         {this.renderRegisterTitle()}
         {this.renderRegistraionForm()}
         {/*this.renderTermsCondition()*/}
         {this.renderSubmitButton()}
-      </View>
+      </ScrollView>
 
+    );
+  }
+  renderHeaderView() {
+    let title = "Create new account";
+    
+    return (
+      <Header isleftArrowDisplay={false} title={title}  />
     );
   }
   renderRegisterTitle() {
     return (
       <View style={registerStyle.registerTitleView}>
-        <Text style={registerStyle.registerTitleText}>{'Create New Account'}</Text>
+        <Text style={registerStyle.registerTitleText}>{'Create New Account Text'}</Text>
       </View>
     )
   }
