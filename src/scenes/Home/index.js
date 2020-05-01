@@ -8,6 +8,7 @@ import SearchBar from '../../components/homeSearchBar';
 import SquareBox from './homeTopSquareBox'
 import CarouselView from '../../components/CarouselView';
 import Carousel from 'react-native-snap-carousel';
+import HomeEventos from './homeEventos'
 var constants = require('../../config/Constants')
 var colorConstants = require('../../config/colorConstant')
 var homeConstants = require('./homeConstants');
@@ -51,10 +52,19 @@ export default class HomeScreen extends BaseComponent {
                     <ScrollView style={{ flex: 1 }}>
                         {this.renderSquareBox()}
                         {this.renderCarouselView()}
+                        {this.renderEventosView()}
                     </ScrollView>
                 </View>
             </View>
         );
+    }
+
+    renderEventosView(){
+        return(
+            <View style={{marginTop: 50}}>
+                <HomeEventos/>
+            </View>
+        )
     }
 
     renderCarouselView() {

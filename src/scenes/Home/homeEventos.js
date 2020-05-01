@@ -9,7 +9,7 @@ var colorConstants = require('../../config/colorConstant')
 var constants = require('../../config/Constants')
 var homeConstant = require('./homeConstants')
 
-export default class HomeSquareBox extends Component {
+export default class HomeEventos extends Component {
 
     constructor(props) {
         super(props)
@@ -20,22 +20,20 @@ export default class HomeSquareBox extends Component {
 
     render() {
         return (
-            <TouchableOpacity onPress={()=>{
-                this.props.squareBoxClicked();
-            }}
-            style={{ height: SCREEN_WIDTH / 3 - 30, width: SCREEN_WIDTH / 3 - 20, backgroundColor: colorConstants.GRAY_LIGHT_COLOR, margin: 10 }}>
-                <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-                    <Image source={require('../../public/images/thumbnail_placeholder.png')}
-                        style={{ height: 40, width: 40, resizeMode: 'contain' }} />
+            <View style={{ paddingTop: 15, paddingBottom: 15, paddingLeft: 10, paddingRight: 10, backgroundColor: colorConstants.GRAY_MEDIUM_COLOR }}>
+                <View>
+                    <Text style={{fontSize: 18, color: colorConstants.GREY_DARK_COLOR_A, fontWeight: 'bold' }}>{"Eventos"}</Text>
                 </View>
-                    <CardView
-                        cardElevation={2}
-                        cardMaxElevation={2}
-                        style={{position:'absolute', bottom:0, left: 0,righ:0, width: SCREEN_WIDTH / 3 - 20, justifyContent:'center', alignItems:'center'}}>
-                        <Text style={{fontSize: 10, margin: 5}}>{this.props.title}</Text>
-                    </CardView>
-            </TouchableOpacity>
+            </View>
         );
+    }
+
+    renderEventosItem(){
+        return(
+            <View>
+
+            </View>
+        )
     }
 }
 
