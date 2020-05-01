@@ -60,9 +60,9 @@ export default class LoginView extends Component {
     this.getFireBaseValue();
   }
 
-  componentDidMount(){
-    Actions.tabbar();
-  }
+  // componentDidMount(){
+  //   Actions.tabbar();
+  // }
 
   async getFireBaseValue() {
     let featureFlags = await getFBRealtimeDBFeatureFlags();
@@ -257,6 +257,11 @@ export default class LoginView extends Component {
             {commonConstants.LOGIN_BUTTON_TEXT}
           </Text>
         </TouchableOpacity>
+        <View style={loginStyle.loginRegisterButonView}>
+              <TouchableOpacity onPress={() => Actions.register()}>
+                <Text style={loginStyle.loginRegisterButonText}>I want to register</Text>
+              </TouchableOpacity>
+            </View>
       </View>
     );
   }

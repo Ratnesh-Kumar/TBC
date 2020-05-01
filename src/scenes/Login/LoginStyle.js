@@ -90,6 +90,12 @@ export default (styles = StyleSheet.create({
   loginSubmitButtonText:{
     color: colorConstant.WHITE_COLOR, fontSize: 20, fontWeight: 'bold'
   },
+  loginRegisterButonView:{
+    paddingTop: 10 
+  },
+  loginRegisterButonText:{
+    color:colorConstant.BLUE_COLOR, fontSize:15, textDecorationLine: 'underline'  
+  },
   validFormViewContainer:{
     alignItems: 'center'
   },
