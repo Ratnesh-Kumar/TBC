@@ -24,7 +24,7 @@ export default class CarouselView extends Component {
         return (
             <View style={{backgroundColor: (this.props.darkTheme)? colorConstants.GREY_DARK_COLOR : colorConstants.WHITE_COLOR, marginTop: 10, paddingBottom: 25}}>
                 <View style={{ paddingLeft: 10, paddingTop: 10, paddingBottom: 15 }}>
-                    <Text style={{ fontSize: 18 }}>{this.props.title}</Text>
+                    <Text style={{ fontSize: 18, color: (this.props.darkTheme)? colorConstants.WHITE_COLOR: colorConstants.PREFERENCE_BLACK_TEXT }}>{this.props.title}</Text>
                 </View>
                 <Carousel
                     layout={'default'}
