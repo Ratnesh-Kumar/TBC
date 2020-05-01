@@ -1,0 +1,76 @@
+{
+    "tabbarTitle":{
+        "tab1": "Explore",
+        "tab2": "Favourites",
+        "tab3": "My Procedures",
+        "tab4": "Adjustments",
+        "tab5": "Plus"
+    },
+    "homeHeader":{
+        "example": "Welcome {{name}} to our localized app!",
+        "searchPlaceHolder": "What do you want to improve?",
+        "searchButton": "Search"
+    },
+    "homeSquareBox":{
+        "squareBoxOneTitle":"Facial Harmonization",
+        "squareBoxTwoTitle":"Breast Enlargement",
+        "squareBoxThreeTitle":"Micrograft"
+    },
+    "homeTopCarousel":{
+        "topArrayTitle": "Explore experiences",
+        "topArray": [{
+            "id": "101",
+            "imageURL": "URL",
+            "description": "Lorem Ipsum has been the industry’s nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+        }, {
+            "id": "101",
+            "imageURL": "URL",
+            "description": "Lorem Ipsum has been the industry’s nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+        }, {
+            "id": "101",
+            "imageURL": "URL",
+            "description": "Lorem Ipsum has been the industry’s nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+        }, {
+            "id": "101",
+            "imageURL": "URL",
+            "description": "Lorem Ipsum has been the industry’s nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+        }, {
+            "id": "101",
+            "imageURL": "URL",
+            "description": "Lorem Ipsum has been the industry’s nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+        }],
+        "bottomArrayTitle":"Promotions",
+        "bottomArray": [{
+            "id": "101",
+            "imageURL": "URL",
+            "description": "Printer took a galley of type and scrambled it\nto make."
+        }, {
+            "id": "101",
+            "imageURL": "URL",
+            "description": "Printer took a galley of type and scrambled it\nto make."
+        }, {
+            "id": "101",
+            "imageURL": "URL",
+            "description": "Printer took a galley of type and scrambled it\nto make."
+        }, {
+            "id": "101",
+            "imageURL": "URL",
+            "description": "Printer took a galley of type and scrambled it\nto make."
+        }, {
+            "id": "101",
+            "imageURL": "URL",
+            "description": "Printer took a galley of type and scrambled it\nto make."
+        }]
+    },
+    "homeEventos":{
+        "eventArray": [{
+          "imageURL": "--URL--",
+          "eventTitle": "MAY 8",
+          "eventDescription": "Printer took a galley of type and scrambled it to make."
+      }, {
+          "imageURL": "--URL--",
+          "eventTitle": "MAY 17TH",
+          "eventDescription": "It is a long established fact that a reader will be."
+      }]
+    }
+}

@@ -5,6 +5,7 @@ import CardView from 'react-native-cardview'
 import Header from '../../components/Header';
 import homeStyle from './homeStyle';
 import { SCREEN_WIDTH } from '../../config/Constants';
+import {string} from '../../i18next/i18n';
 var colorConstants = require('../../config/colorConstant')
 var constants = require('../../config/Constants')
 var homeConstant = require('./homeConstants')

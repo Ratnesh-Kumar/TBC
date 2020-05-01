@@ -20,6 +20,7 @@ import SettingsScreen from './src/scenes/Settings';
 import FBaseWrite from './src/scenes/FirebaseRW/FBaseWrite';
 import FBaseReadItems from './src/scenes/FirebaseRW/FBaseReadItems';
 import TabIcon from './src/components/TabIcon';
+import {strings} from './src/i18next/i18n';
 
 
 import {
@@ -125,26 +126,26 @@ export default class App extends Component {
 
 
         {/* Tab and it's scenes */}
-        <Scene key="myProfileTab" title="Explore" icon={TabIcon} resource={require('./src/public/images/Search_Icon.png')} hideNavBar>
+        <Scene key="myProfileTab" title={strings('tabbarTitle.tab1')} icon={TabIcon} resource={require('./src/public/images/Search_Icon.png')} hideNavBar>
           <Scene key="myProfile" component={MyProfileScreen} title="Blue" hideNavBar />
           <Scene key="fbai" component={FBaseWrite} title="FB Add Item" />
           <Scene key="fbri" component={FBaseReadItems} title="FB Read" />
         </Scene>
 
-        <Scene key="favouriteTab" title="Favourites" icon={TabIcon} resource={require('./src/public/images/favourite_icon.png')} hideNavBar>
+        <Scene key="favouriteTab" title={strings('tabbarTitle.tab2')} icon={TabIcon} resource={require('./src/public/images/favourite_icon.png')} hideNavBar>
           <Scene key="favourite" component={FavouriteScreen} title="home" />
         </Scene>
 
-        <Scene key="homeTab" title="My Procedures" icon={TabIcon} initial={true} homeTabar={true} resource={require('./src/public/images/letter_a_icon.png')} hideNavBar>
+        <Scene key="homeTab" title={strings('tabbarTitle.tab3')} icon={TabIcon} initial={true} homeTabar={true} resource={require('./src/public/images/letter_a_icon.png')} hideNavBar>
           <Scene key="home" component={HomeScreen} title="home" />
         </Scene>
 
-        <Scene key="settingsTab" title="Settings" icon={TabIcon} resource={require('./src/public/images/person_icon.png')} hideNavBar>
+        <Scene key="settingsTab" title={strings('tabbarTitle.tab4')} icon={TabIcon} resource={require('./src/public/images/person_icon.png')} hideNavBar>
           <Scene key="settings" component={SettingsScreen} title="home" />
         </Scene>
 
         {/* Tab and it's scenes */}
-        <Scene key="plusTab" title="Plus" icon={TabIcon} resource={require('./src/public/images/tabbar_more.png')} hideNavBar>
+        <Scene key="plusTab" title={strings('tabbarTitle.tab5')} icon={TabIcon} resource={require('./src/public/images/tabbar_more.png')} hideNavBar>
           <Scene key="more" component={MoreScreen} title="More" />
         </Scene>
       </Scene>

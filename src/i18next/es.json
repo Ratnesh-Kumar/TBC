@@ -1,0 +1,88 @@
+{
+  "tabbarTitle":{
+    "tab1": "Explorar",
+    "tab2": "Favoritas",
+    "tab3": "Mis procedimientos",
+    "tab4": "Ajustes",
+    "tab5": "Más"
+},
+  "homeHeader": {
+    "example": "Welcome {{name}} to our localized app!",
+    "searchPlaceHolder": "¿Qué quieres mejorar?",
+    "searchButton": "Buscar"
+  },
+  "homeSquareBox": {
+    "squareBoxOneTitle": "Armonización facial",
+    "squareBoxTwoTitle": "Aumento de busto",
+    "squareBoxThreeTitle": "Microinjerto"
+  },
+  "homeTopCarousel": {
+    "topArrayTitle": "Explorar experiencias",
+    "topArray": [
+      {
+        "id": "101",
+        "imageURL": "URL",
+        "description": "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+      },
+      {
+        "id": "101",
+        "imageURL": "URL",
+        "description": "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+      },
+      {
+        "id": "101",
+        "imageURL": "URL",
+        "description": "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+      },
+      {
+        "id": "101",
+        "imageURL": "URL",
+        "description": "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+      },
+      {
+        "id": "101",
+        "imageURL": "URL",
+        "description": "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+      }
+    ],
+    "bottomArrayTitle": "Promociones",
+    "bottomArray": [
+      {
+        "id": "101",
+        "imageURL": "URL",
+        "description": "La impresora tomó una galera de tipo y la revolvió para hacerla."
+      },
+      {
+        "id": "101",
+        "imageURL": "URL",
+        "description": "La impresora tomó una galera de tipo y la revolvió para hacerla."
+      },
+      {
+        "id": "101",
+        "imageURL": "URL",
+        "description": "La impresora tomó una galera de tipo y la revolvió para hacerla."
+      },
+      {
+        "id": "101",
+        "imageURL": "URL",
+        "description": "La impresora tomó una galera de tipo y la revolvió para hacerla."
+      },
+      {
+        "id": "101",
+        "imageURL": "URL",
+        "description": "La impresora tomó una galera de tipo y la revolvió para hacerla."
+      }
+    ]
+  },
+  "homeEventos":{
+      "eventArray": [{
+        "imageURL": "--URL--",
+        "eventTitle": "8 DE MAYO.",
+        "eventDescription": "La impresora tomó una galera de tipo y la revolvió para hacerla."
+    }, {
+        "imageURL": "--URL--",
+        "eventTitle": "17 DE MAYO.",
+        "eventDescription": "Es un hecho establecido desde hace mucho tiempo que será un lector."
+    }]
+  }
+}

@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import homeSearchStyle from './homeSearchStyle';
 var colorConstants = require('../../config/colorConstant')
 var homeSearchConstant = require('./homeSearchConstants')
+import {strings} from '../../i18next/i18n';
 
 export default class HomeSearchBar extends Component {
 
@@ -23,7 +24,7 @@ export default class HomeSearchBar extends Component {
                     <View style={{ flex: 0.7, backgroundColor: colorConstants.GRAY_LIGHT_COLOR, borderRadius: 3, padding:0 }}>
                         <TextInput
                             style={{ flex:1, fontSize: 14, paddingTop:5, paddingBottom:5, paddingLeft: 10,  margin:0 }}
-                            placeholder={homeSearchConstant.SEARCH_PLACE_HOLDER}
+                            placeholder={strings('homeHeader.searchPlaceHolder')}
                             value={this.state.searchText}
                             onChangeText={(text) => this.setState({ searchText: text })}
                         />
@@ -32,7 +33,7 @@ export default class HomeSearchBar extends Component {
                         alert("Search Button Pressed!")
                     }}
                     style={{ flex: 0.3, backgroundColor: colorConstants.LOGIN_BUTTON_BLUE, justifyContent: 'center', alignItems: 'center', borderRadius: 3 }}>
-                        <Text style={{ color: colorConstants.WHITE_COLOR }}>{homeSearchConstant.SEARCH_BUTTON}</Text>
+                        <Text style={{ color: colorConstants.WHITE_COLOR }}>{strings('homeHeader.searchButton')}</Text>
                     </TouchableOpacity>
                 </View>
             </View>

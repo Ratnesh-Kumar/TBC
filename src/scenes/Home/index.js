@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
+import { StyleSheet, View, FlatList, ScrollView, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../../components/Header';
+// import Text from '../../components/AppText';
 import { fetchJsonGET, fetchJsonPOST } from '../../services/FetchData'
 import BaseComponent from '../../BaseComponent';
 import SearchBar from '../../components/homeSearchBar';
@@ -9,6 +10,7 @@ import SquareBox from './homeTopSquareBox'
 import CarouselView from '../../components/CarouselView';
 import Carousel from 'react-native-snap-carousel';
 import HomeEventos from './homeEventos'
+import {strings} from '../../i18next/i18n';
 var constants = require('../../config/Constants')
 var colorConstants = require('../../config/colorConstant')
 var homeConstants = require('./homeConstants');
@@ -62,7 +64,7 @@ export default class HomeScreen extends BaseComponent {
     renderEventosView() {
         return (
             <View style={{ marginTop: 40, marginBottom: 40 }}>
-                <HomeEventos eventArray={homeConstants.HOME_EVENTOS_ARRAY} />
+                <HomeEventos eventArray={strings('homeEventos.eventArray')} />
             </View>
         )
     }
@@ -70,43 +72,28 @@ export default class HomeScreen extends BaseComponent {
     renderCarouselView() {
         return (
             <View>
-                <CarouselView entriesData={homeConstants.CAROUSEL_HOME_TOP_ARRAY} title={homeConstants.TOP_HOME_CAROUSEL_TITLE} darkTheme={false} />
+                <CarouselView entriesData={strings('homeTopCarousel.topArray')} title={strings('homeTopCarousel.topArrayTitle')} darkTheme={false} />
                 <View style={{ marginTop: 10 }}>
-                    <CarouselView entriesData={homeConstants.CAROUSEL_HOME_BOTTOM_ARRAY} title={homeConstants.BOTTOM_HOME_CAROUSEL_TITLE} darkTheme={true} />
+                    <CarouselView entriesData={strings('homeTopCarousel.bottomArray')} title={strings('homeTopCarousel.bottomArrayTitle')} darkTheme={true} />
                 </View>
             </View>
         );
     }
 
-    _renderItem({ item, index }) {
-        return (
-            <View style={{
-                backgroundColor: 'floralwhite',
-                borderRadius: 5,
-                height: 250,
-                padding: 50,
-                marginLeft: 25,
-                marginRight: 25,
-            }}>
-                <Text style={{ fontSize: 30 }}>{item.title}</Text>
-                <Text>{item.text}</Text>
-            </View>
-
-        )
-    }
+    
 
     renderSquareBox() {
         return (
             <View style={{ flexDirection: 'row' }}>
-                <SquareBox title={homeConstants.SQUARE_BOX_ONE_TITLE}
+                <SquareBox title={strings('homeSquareBox.squareBoxOneTitle')}
                     squareBoxClicked={() => {
                         alert('Square Box One');
                     }} />
-                <SquareBox title={homeConstants.SQUARE_BOX_TWO_TITLE}
+                <SquareBox title={strings('homeSquareBox.squareBoxTwoTitle')}
                     squareBoxClicked={() => {
                         alert('Square Box Two');
                     }} />
-                <SquareBox title={homeConstants.SQUARE_BOX_THREE_TITLE}
+                <SquareBox title={strings('homeSquareBox.squareBoxThreeTitle')}
                     squareBoxClicked={() => {
                         alert('Square Box Three');
                     }} />

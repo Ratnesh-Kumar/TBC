@@ -6,9 +6,11 @@ import Header from '../../components/Header';
 import homeStyle from './homeStyle';
 import { SCREEN_WIDTH } from '../../config/Constants';
 import { BLACK_COLOR } from '../../config/colorConstant';
+import String from '../../i18next/i18n';
 var colorConstants = require('../../config/colorConstant')
 var constants = require('../../config/Constants')
 var homeConstant = require('./homeConstants')
+
 
 export default class HomeEventos extends Component {
 
