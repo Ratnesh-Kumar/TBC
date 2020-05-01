@@ -7,8 +7,11 @@ import {
   GoogleAnalyticsTracker,
   GoogleAnalyticsSettings,
 } from 'react-native-google-analytics-bridge';
-import LoginScreen from './src/scenes/Login';
+
+import RegisterScreen from './src/scenes/Register';
+import RecoverScreen from './src/scenes/RecoverAccount';
 // import Realm from 'realm';
+import LoginScreen from './src/scenes/Login';
 import HomeScreen from './src/scenes/Home';
 import MyProfileScreen from './src/scenes/MyProfile';
 import MoreScreen from './src/scenes/More';
@@ -18,27 +21,28 @@ import FBaseWrite from './src/scenes/FirebaseRW/FBaseWrite';
 import FBaseReadItems from './src/scenes/FirebaseRW/FBaseReadItems';
 import TabIcon from './src/components/TabIcon';
 
+
 import {
-  StyleSheet
+  StyleSheet, ActionSheetIOS
 } from 'react-native'
 console.disableYellowBox = true;
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
-    height:70
+    flex: 1,
+    height: 70
   },
 
   tabBarStyle: {
-    borderTopWidth:1,
-    borderTopColor:'transparent',
-    height:70,
+    borderTopWidth: 1,
+    borderTopColor: 'transparent',
+    height: 70,
   },
   tabBarSelectedItemStyle: {
-    height:70
+    height: 70
   },
 });
 
-let realm;
+//let realm;
 let tracker = new GoogleAnalyticsTracker('G-LC2MDJK4YT');
 
 // const store = configureStore();
@@ -94,6 +98,7 @@ export default class App extends Component {
             title="register"
             duration={0}
           />
+          
           <Scene
             key="recover"
             type={ActionConst.RESET}
@@ -115,12 +120,12 @@ export default class App extends Component {
         key="tabbar"
         tabs={true}
         navTransparent={true}
-        tabBarStyle={styles.tabBarStyle} tabBarSelectedItemStyle={styles.tabBarStyle}  hideNavBar={true} showLabel={false}>
+        tabBarStyle={styles.tabBarStyle} tabBarSelectedItemStyle={styles.tabBarStyle} hideNavBar={true} showLabel={false}>
         {/* Tab and it's scenes */}
-        
+
 
         {/* Tab and it's scenes */}
-        <Scene key="myProfileTab" title="Explore" icon={TabIcon}  resource={require('./src/public/images/Search_Icon.png')} hideNavBar>
+        <Scene key="myProfileTab" title="Explore" icon={TabIcon} resource={require('./src/public/images/Search_Icon.png')} hideNavBar>
           <Scene key="myProfile" component={MyProfileScreen} title="Blue" hideNavBar />
           <Scene key="fbai" component={FBaseWrite} title="FB Add Item" />
           <Scene key="fbri" component={FBaseReadItems} title="FB Read" />
@@ -139,7 +144,7 @@ export default class App extends Component {
         </Scene>
 
         {/* Tab and it's scenes */}
-        <Scene key="plusTab" title="Plus" icon={TabIcon}  resource={require('./src/public/images/tabbar_more.png')}  hideNavBar>
+        <Scene key="plusTab" title="Plus" icon={TabIcon} resource={require('./src/public/images/tabbar_more.png')} hideNavBar>
           <Scene key="more" component={MoreScreen} title="More" />
         </Scene>
       </Scene>

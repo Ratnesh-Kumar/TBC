@@ -60,9 +60,9 @@ export default class LoginView extends Component {
     this.getFireBaseValue();
   }
 
-  componentDidMount(){
-    Actions.tabbar();
-  }
+  // componentDidMount(){
+  //   Actions.tabbar();
+  // }
 
   async getFireBaseValue() {
     let featureFlags = await getFBRealtimeDBFeatureFlags();
