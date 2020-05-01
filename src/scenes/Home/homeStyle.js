@@ -9,7 +9,7 @@ export default (styles = StyleSheet.create({
     backgroundColor: colorConstants.WHITE_COLOR,
   },
   viewContainer: {
-    flex: 1
+    flex: 1,
   },
   seperateLine: {
     flex: 1,

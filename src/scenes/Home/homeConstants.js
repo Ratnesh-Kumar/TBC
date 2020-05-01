@@ -10,43 +10,53 @@ export const BOTTOM_HOME_CAROUSEL_TITLE = "Promociones";
 export const CAROUSEL_HOME_TOP_ARRAY = [{
     "id": "101",
     "imageURL": "URL",
-    "description" : "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
-},{
+    "description": "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+}, {
     "id": "101",
     "imageURL": "URL",
-    "description" : "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
-},{
+    "description": "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+}, {
     "id": "101",
     "imageURL": "URL",
-    "description" : "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
-},{
+    "description": "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+}, {
     "id": "101",
     "imageURL": "URL",
-    "description" : "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
-},{
+    "description": "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+}, {
     "id": "101",
     "imageURL": "URL",
-    "description" : "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
+    "description": "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
 }]
 
 export const CAROUSEL_HOME_BOTTOM_ARRAY = [{
     "id": "101",
     "imageURL": "URL",
-    "description" : "Printer took a galley of type and scrambled it\nto make."
-},{
+    "description": "Printer took a galley of type and scrambled it\nto make."
+}, {
     "id": "101",
     "imageURL": "URL",
-    "description" : "Printer took a galley of type and scrambled it\nto make."
-},{
+    "description": "Printer took a galley of type and scrambled it\nto make."
+}, {
     "id": "101",
     "imageURL": "URL",
-    "description" : "Printer took a galley of type and scrambled it\nto make."
-},{
+    "description": "Printer took a galley of type and scrambled it\nto make."
+}, {
     "id": "101",
     "imageURL": "URL",
-    "description" : "Printer took a galley of type and scrambled it\nto make."
-},{
+    "description": "Printer took a galley of type and scrambled it\nto make."
+}, {
     "id": "101",
     "imageURL": "URL",
-    "description" : "Printer took a galley of type and scrambled it\nto make."
+    "description": "Printer took a galley of type and scrambled it\nto make."
+}]
+
+export const HOME_EVENTOS_ARRAY = [{
+    "imageURL": "--URL--",
+    "eventTitle": "8 DE MAYO.",
+    "eventDescription": "Printer took a galley of type and scrambled it to make."
+}, {
+    "imageURL": "--URL--",
+    "eventTitle": "17 DE MAYO.",
+    "eventDescription": "It is a long established fact that a reader will be."
 }]

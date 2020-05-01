@@ -20,7 +20,6 @@ export default class CarouselView extends Component {
     }
 
     render() {
-        console.log("############ render : " + JSON.stringify(this.props.entriesData))
         return (
             <View style={{backgroundColor: (this.props.darkTheme)? colorConstants.GREY_DARK_COLOR : colorConstants.WHITE_COLOR, marginTop: 10, paddingBottom: 25}}>
                 <View style={{ paddingLeft: 10, paddingTop: 10, paddingBottom: 15 }}>
@@ -40,8 +39,6 @@ export default class CarouselView extends Component {
     }
 
     renderItem(item) {
-        // console.log("############ renderItem 1: " + JSON.stringify(item))
-        console.log("############ renderItem 2: " + item.description)
         return (
             <View style={{ width: 250 }}>
                 <View style={{ backgroundColor: colorConstants.GRAY_LIGHT_COLOR, borderRadius: 20 }}>

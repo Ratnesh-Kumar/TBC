@@ -98,7 +98,6 @@ export default class LoginView extends Component {
   }
 
   onMessage = event =>{
-    console.log('########## onMeassage: '+event);
     if (event && event.nativeEvent.data) {
       if (['cancel', 'error', 'expired'].includes(event.nativeEvent.data)) {
         console.log('error', event.nativeEvent.data);

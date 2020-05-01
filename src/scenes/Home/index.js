@@ -59,10 +59,10 @@ export default class HomeScreen extends BaseComponent {
         );
     }
 
-    renderEventosView(){
-        return(
-            <View style={{marginTop: 50}}>
-                <HomeEventos/>
+    renderEventosView() {
+        return (
+            <View style={{ marginTop: 40, marginBottom: 40 }}>
+                <HomeEventos eventArray={homeConstants.HOME_EVENTOS_ARRAY} />
             </View>
         )
     }
@@ -74,15 +74,6 @@ export default class HomeScreen extends BaseComponent {
                 <View style={{ marginTop: 10 }}>
                     <CarouselView entriesData={homeConstants.CAROUSEL_HOME_BOTTOM_ARRAY} title={homeConstants.BOTTOM_HOME_CAROUSEL_TITLE} darkTheme={true} />
                 </View>
-                {/* <View style={{ flex: 1, flexDirection:'row', justifyContent: 'center', }}>
-                <Carousel
-                  layout={"default"}
-                  ref={ref => this.carousel = ref}
-                  data={homeConstants.CAROUSEL_HOME_ARRAY}
-                  sliderWidth={300}
-                  itemWidth={300}
-                  renderItem={this._renderItem}
-                  onSnapToItem = { index => this.setState({activeIndex:index}) } /> */}
             </View>
         );
     }
