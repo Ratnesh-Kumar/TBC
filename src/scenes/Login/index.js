@@ -19,7 +19,7 @@ import Constants from '../../config/Constants';
 
 import { Actions } from 'react-native-router-flux';
 import { getFBRealtimeDBFeatureFlags } from '../../config/firebasequery'
-import Realm from 'realm';
+// import Realm from 'realm';
 import { TBC_COLOR } from '../../config/colorConstant';
 import TouchID from 'react-native-touch-id';
 import ConfirmGoogleCaptcha from 'react-native-google-recaptcha-v2';
@@ -48,17 +48,22 @@ export default class LoginView extends Component {
     this.buttonAnimated = new Animated.Value(0);
     this.growAnimated = new Animated.Value(0);
      this.onMessage = this.onMessage.bind(this);
-    realm = new Realm({ path: 'UserDatabase.realm' });
+    // realm = new Realm({ path: 'UserDatabase.realm' });
     //creating temporary user logins
-    realm.write(() => {
-      realm.create('user_details', {
-        user_name: 'admin1',
-        user_password: 'admin1',
-      });
-    });
+    // realm.write(() => {
+    //   realm.create('user_details', {
+    //     user_name: 'admin1',
+    //     user_password: 'admin1',
+    //   });
+    // });
     this.isTouchIdSupported()
     this.getFireBaseValue();
   }
+
+  componentDidMount(){
+    Actions.tabbar();
+  }
+
   async getFireBaseValue() {
     let featureFlags = await getFBRealtimeDBFeatureFlags();
     isCaptchaDisplay = featureFlags.isCaptchaDisplay
@@ -264,9 +269,9 @@ export default class LoginView extends Component {
     const { username } = this.state;
     const { password } = this.state;
 
-    var user_details = realm
-      .objects('user_details')
-      .filtered('user_name =$0 && user_password=$1', username, password);
+    // var user_details = realm
+    //   .objects('user_details')
+    //   .filtered('user_name =$0 && user_password=$1', username, password);
 
     if (this.state.username === '' || this.state.password === '') {
       Alert.alert('Alert', 'Either Username or Password Field is empty');
