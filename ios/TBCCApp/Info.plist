@@ -20,8 +20,26 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.235399015867-nja66t5c5im5tclfr802pvgpa2jktp5e</string>
+			</array>
+			<key>item 0</key>
+			<string>com.googleusercontent.apps.235399015867-nja66t5c5im5tclfr802pvgpa2jktp5e</string>
+		</dict>
+		<dict/>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>241602400586452</string>
+	<key>FacebookDisplayName</key>
+	<string>Albya</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

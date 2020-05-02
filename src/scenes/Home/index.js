@@ -37,7 +37,6 @@ export default class HomeScreen extends BaseComponent {
         }
         return responseData;
     }
-
     render() {
         return (
             <View style={homeStyle.container}>
