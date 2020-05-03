@@ -5,7 +5,7 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 const MARGIN = 40;
 
 // eslint-disable-next-line no-undef
-export default (styles = StyleSheet.create({
+export default styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -132,6 +132,15 @@ export default (styles = StyleSheet.create({
     marginTop: 5,
     alignItems: 'center',
   },
+  loginRegisterButonView:{
+    paddingTop: 10 
+  },
+  loginRegisterButonText:{
+    color:colorConstant.BLUE_COLOR, fontSize:15, textDecorationLine: 'underline'  
+  },
+  validFormViewContainer:{
+    alignItems: 'center'
+  },
   headingText:
   {
     fontSize: 16,
@@ -156,7 +165,5 @@ export default (styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
   },
-  reCaptchaView: {
-    marginTop: 10
-  }
-}));
+  });
+

@@ -7,37 +7,42 @@ import {
   GoogleAnalyticsTracker,
   GoogleAnalyticsSettings,
 } from 'react-native-google-analytics-bridge';
-import LoginScreen from './src/scenes/Login';
+
+import RegisterScreen from './src/scenes/Register';
+import RecoverScreen from './src/scenes/RecoverAccount';
 // import Realm from 'realm';
+import LoginScreen from './src/scenes/Login';
 import HomeScreen from './src/scenes/Home';
 import MyProfileScreen from './src/scenes/MyProfile';
 import MoreScreen from './src/scenes/More';
+import FavouriteScreen from './src/scenes/Favourites';
+import SettingsScreen from './src/scenes/Settings';
 import FBaseWrite from './src/scenes/FirebaseRW/FBaseWrite';
 import FBaseReadItems from './src/scenes/FirebaseRW/FBaseReadItems';
 import TabIcon from './src/components/TabIcon';
 
+
 import {
-  StyleSheet
+  StyleSheet, ActionSheetIOS
 } from 'react-native'
 console.disableYellowBox = true;
 const styles = StyleSheet.create({
   container: {
-    flex: 1, backgroundColor: 'transparent', justifyContent: 'center',
-    alignItems: 'center',
-    height:60
+    flex: 1,
+    height: 70
   },
 
   tabBarStyle: {
-    backgroundColor: '#fff',
-    height:60,
+    borderTopWidth: 1,
+    borderTopColor: 'transparent',
+    height: 70,
   },
   tabBarSelectedItemStyle: {
-    backgroundColor: '#ddd',
-    height:60
+    height: 70
   },
 });
 
-let realm;
+//let realm;
 let tracker = new GoogleAnalyticsTracker('G-LC2MDJK4YT');
 
 // const store = configureStore();
@@ -86,6 +91,22 @@ export default class App extends Component {
             title="login"
             duration={0}
           />
+          <Scene
+            key="register"
+            type={ActionConst.RESET}
+            component={RegisterScreen}
+            title="register"
+            duration={0}
+          />
+          
+          <Scene
+            key="recover"
+            type={ActionConst.RESET}
+            component={RecoverScreen}
+            title="recover"
+            duration={0}
+          />
+
           {this.renderTabbar()}
         </Scene>
       </Router>
@@ -98,21 +119,32 @@ export default class App extends Component {
       <Scene
         key="tabbar"
         tabs={true}
-        tabBarStyle={styles.tabBarStyle} tabBarSelectedItemStyle={styles.tabBarStyle}  hideNavBar={true} showLabel={false}>
+        navTransparent={true}
+        tabBarStyle={styles.tabBarStyle} tabBarSelectedItemStyle={styles.tabBarStyle} hideNavBar={true} showLabel={false}>
         {/* Tab and it's scenes */}
-        <Scene key="home" title="Home" icon={TabIcon} resource={require('./src/public/images/icon-home.png')} hideNavBar>
-          <Scene key="home" component={HomeScreen} title="home" />
-        </Scene>
+
 
         {/* Tab and it's scenes */}
-        <Scene key="myProfile" title="My Profile" icon={TabIcon} resource={require('./src/public/images/icon_profile.png')} hideNavBar>
+        <Scene key="myProfileTab" title="Explore" icon={TabIcon} resource={require('./src/public/images/Search_Icon.png')} hideNavBar>
           <Scene key="myProfile" component={MyProfileScreen} title="Blue" hideNavBar />
           <Scene key="fbai" component={FBaseWrite} title="FB Add Item" />
           <Scene key="fbri" component={FBaseReadItems} title="FB Read" />
         </Scene>
 
+        <Scene key="favouriteTab" title="Favourites" icon={TabIcon} resource={require('./src/public/images/favourite_icon.png')} hideNavBar>
+          <Scene key="favourite" component={FavouriteScreen} title="home" />
+        </Scene>
+
+        <Scene key="homeTab" title="My Procedures" icon={TabIcon} initial={true} homeTabar={true} resource={require('./src/public/images/letter_a_icon.png')} hideNavBar>
+          <Scene key="home" component={HomeScreen} title="home" />
+        </Scene>
+
+        <Scene key="settingsTab" title="Settings" icon={TabIcon} resource={require('./src/public/images/person_icon.png')} hideNavBar>
+          <Scene key="settings" component={SettingsScreen} title="home" />
+        </Scene>
+
         {/* Tab and it's scenes */}
-        <Scene key="more" title="More" icon={TabIcon}  resource={require('./src/public/images/tabbar_more.png')}  hideNavBar>
+        <Scene key="plusTab" title="Plus" icon={TabIcon} resource={require('./src/public/images/tabbar_more.png')} hideNavBar>
           <Scene key="more" component={MoreScreen} title="More" />
         </Scene>
       </Scene>

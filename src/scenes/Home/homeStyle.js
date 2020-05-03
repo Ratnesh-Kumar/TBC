@@ -6,7 +6,7 @@ var colorConstants = require('../../config/colorConstant')
 export default (styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colorConstants.GRAY_LIGHT_COLOR,
+    backgroundColor: colorConstants.WHITE_COLOR,
   },
   viewContainer: {
     flex: 1
@@ -36,5 +36,11 @@ export default (styles = StyleSheet.create({
   },
   renderItemText: {
     width: 60
-  }
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+    color: 'black',
+  },
 }));
