@@ -150,6 +150,7 @@ export default (styles = StyleSheet.create({
     paddingLeft: 15, paddingRight: 15
   },
   validFormSecondFieldView: {
+    height:58,
     marginTop: 20,
     borderColor: 'black',
     borderRadius: 5,

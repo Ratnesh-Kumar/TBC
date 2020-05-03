@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import {
   View,
-  Image,
   Text,
   KeyboardAvoidingView,
   TouchableOpacity,
@@ -39,7 +38,6 @@ import {
 } from 'react-native-google-signin';
 var commonConstants = require('../../config/Constants');
 var colorConstant = require('../../config/colorConstant')
-var logo = require('../../public/images/og_logo.webp')
 let realm;
 const siteKey = '6Le2394UAAAAAHlpjMsukQVuXNAMFLClkynBAQTh';
 const baseUrl = 'https://lami.net.in';
@@ -316,7 +314,7 @@ checkGoogleSign(){
         {this.renderValidationForm()}
         {this.renderSubmitButton()}
         {this.renderRegisterLink()}
-        {this.renderTouchIdAndFaceId()}
+        {/* {this.renderTouchIdAndFaceId()} */}
         {this.checkGoogleSign()}
         {this.checkFBLogin()}
         <ConfirmGoogleCaptcha
@@ -330,18 +328,18 @@ checkGoogleSign(){
     );
   }
 
-  renderTouchIdAndFaceId() {
-    return (
-      <View style={loginStyle.touchIdContainer}>
-        {(this.state.isTouchIdSupported) ? <TouchableOpacity onPress={() => { this.handleBioAuthentication() }}>
-          <Text style={loginStyle.touchIdLinkView}>{'Login with Touch ID / Face ID'}</Text>
-        </TouchableOpacity> : null}
-        <TouchableOpacity onPress={() => { (isCaptchaDisplay) ? this.captchaForm.show() : alert("Login Success") }} style={loginStyle.reCaptchaView}>
-          <Text style={loginStyle.touchIdLinkView}>{'reCaptcha'}</Text>
-        </TouchableOpacity>
-      </View>
-    )
-  }
+  // renderTouchIdAndFaceId() {
+  //   return (
+  //     <View style={loginStyle.touchIdContainer}>
+  //       {(this.state.isTouchIdSupported) ? <TouchableOpacity onPress={() => { this.handleBioAuthentication() }}>
+  //         <Text style={loginStyle.touchIdLinkView}>{'Login with Touch ID / Face ID'}</Text>
+  //       </TouchableOpacity> : null}
+  //       <TouchableOpacity onPress={() => { (isCaptchaDisplay) ? this.captchaForm.show() : alert("Login Success") }} style={loginStyle.reCaptchaView}>
+  //         <Text style={loginStyle.touchIdLinkView}>{'reCaptcha'}</Text>
+  //       </TouchableOpacity>
+  //     </View>
+  //   )
+  // }
 
 
 
@@ -372,7 +370,7 @@ checkGoogleSign(){
     return (
       <View style={loginStyle.loginTitleView}>
         <View style={{alignItems:'space-around',flexDirection:'row'}}>
-          <Image source={logo} style={{height:60,width:80}}/>
+          {/* <Image source={logo} style={{height:60,width:80}}/> */}
           <Text style={loginStyle.loginTitleText}>{'A L B Y A'}</Text>
           </View>
           <Text style={loginStyle.subHeading}>The New Aesthetic</Text>
@@ -509,6 +507,7 @@ LoginView.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop:10,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
