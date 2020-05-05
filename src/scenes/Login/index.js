@@ -4,19 +4,20 @@
 import React, { Component } from 'react';
 import {
   View,
-  Image,
   Text,
   KeyboardAvoidingView,
   TouchableOpacity,
   Dimensions,
   Animated,
+  ActivityIndicator,
+  StyleSheet,
   Easing,
   Alert,
 } from 'react-native';
 import TextInputMaterial from '../../components/textInputMaterial';
 import PropTypes from 'prop-types';
 import Constants from '../../config/Constants';
-
+import {ScrollView} from 'react-native-gesture-handler'
 import { Actions } from 'react-native-router-flux';
 import { getFBRealtimeDBFeatureFlags } from '../../config/firebasequery'
 // import Realm from 'realm';
@@ -24,6 +25,17 @@ import { TBC_COLOR } from '../../config/colorConstant';
 import TouchID from 'react-native-touch-id';
 import ConfirmGoogleCaptcha from 'react-native-google-recaptcha-v2';
 import loginStyle from './LoginStyle';
+import {
+  LoginButton,
+  AccessToken,
+  GraphRequest,
+  GraphRequestManager,
+} from 'react-native-fbsdk';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from 'react-native-google-signin';
 var commonConstants = require('../../config/Constants');
 var colorConstant = require('../../config/colorConstant')
 let realm;
@@ -41,6 +53,12 @@ export default class LoginView extends Component {
       isLoading: false,
       username: '',
       password: '',
+      user_name: '',
+      token: '',
+      userInfo: null,
+      doContinueWithGoogle:false,
+      gettingLoginStatus: true,
+      profile_pic: '',
       isTouchIdSupported: false,
       isFaceIdSupported: false,
     };
@@ -59,10 +77,86 @@ export default class LoginView extends Component {
     this.isTouchIdSupported()
     this.getFireBaseValue();
   }
+ 
+  componentDidMount() {
+    //initial configuration
+    GoogleSignin.configure({
+      //It is mandatory to call this method before attempting to call signIn()
+      scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+      // Repleace with your webClientId generated from Firebase console
+      webClientId: '1002284040958-85g2t4o1f5qqve7449c798767sbcb4il.apps.googleusercontent.com',
+    });
+    //Check if user is already signed in
+    this._isSignedIn();
+  }
 
-  // componentDidMount(){
-  //   Actions.tabbar();
-  // }
+  _isSignedIn = async () => {
+    const isSignedIn = await GoogleSignin.isSignedIn();
+    if (isSignedIn) {
+      //alert('User is already signed in');
+      //Get the User details as user is already signed in
+      this._getCurrentUserInfo();
+    } else {
+      //alert("Please Login");
+      console.log('Please Login');
+    }
+    this.setState({ gettingLoginStatus: false });
+  };
+
+  _getCurrentUserInfo = async () => {
+    try {
+      const userInfo = await GoogleSignin.signInSilently();
+      console.log('User Info --> ', userInfo);
+      this.setState({ userInfo: userInfo });
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_REQUIRED) {
+        alert('User has not signed in yet');
+        console.log('User has not signed in yet');
+      } else {
+        alert("Something went wrong. Unable to get user's info");
+        console.log("Something went wrong. Unable to get user's info");
+      }
+    }
+  };
+
+  _signIn = async () => {
+    //Prompts a modal to let the user sign in into your application.
+    try {
+      await GoogleSignin.hasPlayServices({
+        //Check if device has Google Play Services installed.
+        //Always resolves to true on iOS.
+        showPlayServicesUpdateDialog: true,
+      });
+      const userInfo = await GoogleSignin.signIn();
+      console.log('User Info --> ', userInfo);
+      this.setState({ userInfo: userInfo,
+        doContinueWithGoogle : true 
+      });
+    } catch (error) {
+      console.log('Message', error.message);
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        console.log('User Cancelled the Login Flow');
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        console.log('Signing In');
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        console.log('Play Services Not Available or Outdated');
+      } else {
+        console.log('Some Other Error Happened');
+      }
+    }
+  };
+
+  _signOut = async () => {
+    //Remove user session from the device.
+    try {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+      this.setState({ userInfo: null }); // Remove the user from your app's state as well
+      Actions.login()
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   async getFireBaseValue() {
     let featureFlags = await getFBRealtimeDBFeatureFlags();
@@ -113,14 +207,116 @@ export default class LoginView extends Component {
       }
     }
   };
+renderRegisterLink(){
+  return(
+    <View>
+<Text style={{fontSize:15,fontWeight:'normal',marginLeft: 30,marginTop: 10}}>
+  Quiero registrar me
+</Text>
+    </View>
+  )
+}
+get_Response_Info = (error, result) => {
+  if (error) {
+    //Alert for the Error
+    Alert.alert('Error fetching data: ' + error.toString());
+  } else {
+    //response alert
+    console.log('result of fb'+JSON.stringify(result))
+   // alert(JSON.stringify(result));
+    this.setState({ user_name: 'Welcome' + ' ' + result.name });
+    this.setState({ token: 'User Token: ' + ' ' + result.id });
+    this.setState({ profile_pic: result.picture.data.url });
+    Actions.tabbar({userName: this.state.user_name})
+  }
+};
+
+onLogout = () => {
+  //Clear the state after logout
+  console.log('logout of')
+  this.setState({ user_name: null, token: null, profile_pic: null });
+};
+checkFBLogin(){
+  return( 
+<View >
+<LoginButton
+      style={loginStyle.fbButton}
+      readPermissions={['public_profile']}
+      onLoginFinished={(error, result) => {
+        console.log('fb button pressed')
+        if (error) {
+          console.log(error)
+          alert(error);
+          alert('login has error: ' + result.error);
+        } else if (result.isCancelled) {
+          console.log(result.isCancelled)
+          alert('login is cancelled.');
+        } else {
+          AccessToken.getCurrentAccessToken().then(data => {
+            console.log(data.accessToken.toString())
+           // alert(data.accessToken.toString());
+            const processRequest = new GraphRequest(
+              '/me?fields=name,picture.type(large)',
+              null,
+              this.get_Response_Info
+            );
+            // Start the graph request.
+            new GraphRequestManager().addRequest(processRequest).start();
+          });
+        }
+      }}
+      onLogoutFinished={this.onLogout}
+    />
+</View>
+
+  )
+}
+checkGoogleSign(){
+     if (this.state.gettingLoginStatus) {
+      return (
+        <View style={styles.container}>
+          <ActivityIndicator size="large" color="#0000ff" />
+        </View>
+      );
+    } else if (this.state.userInfo != null && (this.state.doContinueWithGoogle === true)) {
+        //Showing the User detail
+        Actions.tabbar({userName: this.state.userInfo.user.username})
+        return(
+          <View>
+  <TouchableOpacity style={loginStyle.logoutButton} onPress={this._signOut}>
+              <Text style={loginStyle.logoutButtonText}>Logout</Text>
+            </TouchableOpacity>     
+          </View>
+        )
+    }
+       else {
+        //For login showing the Signin button
+        return (
+          <View style={styles.container}>
+            <GoogleSigninButton
+              style={{ width: 312, height: 48 }}
+              size={GoogleSigninButton.Size.Wide}
+              color={GoogleSigninButton.Color.Light}
+              onPress={this._signIn}
+            />
+             
+           
+          </View>
+        );
+      }
+    }
+  
 
   render() {
     return (
-      <View style={loginStyle.renderContainer}>
+      <ScrollView style={loginStyle.renderContainer} showsVerticalScrollIndicator={false}>
         {this.renderLoginTitle()}
         {this.renderValidationForm()}
         {this.renderSubmitButton()}
-        {this.renderTouchIdAndFaceId()}
+        {this.renderRegisterLink()}
+        {/* {this.renderTouchIdAndFaceId()} */}
+        {this.checkGoogleSign()}
+        {this.checkFBLogin()}
         <ConfirmGoogleCaptcha
           ref={_ref => this.captchaForm = _ref}
           siteKey={siteKey}
@@ -128,22 +324,22 @@ export default class LoginView extends Component {
           languageCode='en'
           onMessage={()=>this.onMessage()}
         />
-      </View>
+      </ScrollView>
     );
   }
 
-  renderTouchIdAndFaceId() {
-    return (
-      <View style={loginStyle.touchIdContainer}>
-        {(this.state.isTouchIdSupported) ? <TouchableOpacity onPress={() => { this.handleBioAuthentication() }}>
-          <Text style={loginStyle.touchIdLinkView}>{'Login with Touch ID / Face ID'}</Text>
-        </TouchableOpacity> : null}
-        <TouchableOpacity onPress={() => { (isCaptchaDisplay) ? this.captchaForm.show() : alert("Login Success") }} style={loginStyle.reCaptchaView}>
-          <Text style={loginStyle.touchIdLinkView}>{'reCaptcha'}</Text>
-        </TouchableOpacity>
-      </View>
-    )
-  }
+  // renderTouchIdAndFaceId() {
+  //   return (
+  //     <View style={loginStyle.touchIdContainer}>
+  //       {(this.state.isTouchIdSupported) ? <TouchableOpacity onPress={() => { this.handleBioAuthentication() }}>
+  //         <Text style={loginStyle.touchIdLinkView}>{'Login with Touch ID / Face ID'}</Text>
+  //       </TouchableOpacity> : null}
+  //       <TouchableOpacity onPress={() => { (isCaptchaDisplay) ? this.captchaForm.show() : alert("Login Success") }} style={loginStyle.reCaptchaView}>
+  //         <Text style={loginStyle.touchIdLinkView}>{'reCaptcha'}</Text>
+  //       </TouchableOpacity>
+  //     </View>
+  //   )
+  // }
 
 
 
@@ -173,7 +369,11 @@ export default class LoginView extends Component {
   renderLoginTitle() {
     return (
       <View style={loginStyle.loginTitleView}>
-        <Text style={loginStyle.loginTitleText}>{'Login Screen'}</Text>
+        <View style={{alignItems:'space-around',flexDirection:'row'}}>
+          {/* <Image source={logo} style={{height:60,width:80}}/> */}
+          <Text style={loginStyle.loginTitleText}>{'A L B Y A'}</Text>
+          </View>
+          <Text style={loginStyle.subHeading}>The New Aesthetic</Text>
       </View>
     )
   }
@@ -184,7 +384,9 @@ export default class LoginView extends Component {
         behavior="height"
         style={loginStyle.validFormViewContainer}>
         <View style={loginStyle.inputWrapper}>
+        <Text style={loginStyle.headingText}>{"Ingressa correo electronico y contrasena: "}</Text>
           <View style={loginStyle.validFormSubView}>
+            <View style={loginStyle.firstFieldView}>
             <TextInputMaterial
               blurText={this.state.username}
               refsValue={commonConstants.TEXT_INPUT_USERNAME}
@@ -208,6 +410,8 @@ export default class LoginView extends Component {
                 this.refs.passwordInput.focus();
               }}
             />
+            </View>
+
             <View style={loginStyle.validFormSecondFieldView}>
               <TextInputMaterial
                 secureTextEntry={this.state.showPass}
@@ -303,3 +507,28 @@ LoginView.propTypes = {
   autoCapitalize: PropTypes.string,
   returnKeyType: PropTypes.string,
 };
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop:10,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  imageStyle: {
+    width: 200,
+    height: 300,
+    resizeMode: 'contain',
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    width: 300,
+    marginTop: 30,
+  },
+});
+
+
