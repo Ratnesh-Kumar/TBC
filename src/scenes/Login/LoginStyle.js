@@ -136,7 +136,7 @@ export default styles = StyleSheet.create({
     paddingTop: 10 
   },
   loginRegisterButonText:{
-    color:colorConstant.BLUE_COLOR, fontSize:15, textDecorationLine: 'underline'  
+    color:colorConstant.BLUE_COLOR, fontSize:15, textDecorationLine: 'underline',paddingLeft:30 , marginTop:10
   },
   validFormViewContainer:{
     alignItems: 'center'

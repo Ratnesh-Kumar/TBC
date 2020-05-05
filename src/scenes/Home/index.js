@@ -11,6 +11,7 @@ import Carousel from 'react-native-snap-carousel';
 var constants = require('../../config/Constants')
 var colorConstants = require('../../config/colorConstant')
 var homeConstants = require('./homeConstants');
+import analytics from '@react-native-firebase/analytics';
 import homeStyle from './homeStyle';
 
 export default class HomeScreen extends BaseComponent {
@@ -43,6 +44,7 @@ export default class HomeScreen extends BaseComponent {
         return responseData;
     }
     render() {
+        analytics().setCurrentScreen('Home');
         return (
             <View style={homeStyle.container}>
                 <SearchBar />

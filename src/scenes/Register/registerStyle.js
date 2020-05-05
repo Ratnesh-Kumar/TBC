@@ -9,10 +9,18 @@ export default (styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
       },
-      button: {
+      enableButton: {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: colorConstant.TBC_COLOR,
+        height: MARGIN,
+        borderRadius: 0,
+        paddingTop:3, paddingBottom:5,
+      },
+      disableButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'grey',
         height: MARGIN,
         borderRadius: 0,
         paddingTop:3, paddingBottom:5,
@@ -30,9 +38,7 @@ export default (styles = StyleSheet.create({
       validFormViewContainer:{
         alignItems: 'center'
       },
-      validFormSecondFieldView:{
-        marginTop: 15
-      },
+      
       inputWrapper: {
         width: DEVICE_WIDTH - 20,
       },
@@ -57,5 +63,19 @@ export default (styles = StyleSheet.create({
       registerTermsText:{
         paddingLeft: 10,  color:colorConstant.BLUE_COLOR, fontSize:15, textDecorationLine: 'underline' 
 
+      },
+      firstFieldView: {
+        height: 58,
+        borderColor: 'black',
+        borderRadius: 5,
+        borderWidth: 1,
+        //backgroundColor: 'yellow'
+      },
+      validFormSecondFieldView: {
+        height:58,
+        marginTop: 20,
+        borderColor: 'black',
+        borderRadius: 5,
+        borderWidth: 1,
       },
 }))

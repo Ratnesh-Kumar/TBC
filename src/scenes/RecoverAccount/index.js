@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import Header from '../../components/Header';
 import { Actions } from 'react-native-router-flux';
 import recoverStyle from './recoverAccountStyle';
+import analytics from '@react-native-firebase/analytics';
 var commonConstants = require('../../config/Constants');
 
 
@@ -22,6 +23,7 @@ export default class RecoverAccountView extends Component {
 
     }
     render() {
+        analytics().setCurrentScreen('Recover Account');
         return (
             <View style={recoverStyle.renderContainer}>
                 {this.renderHeaderView()}
@@ -42,8 +44,9 @@ export default class RecoverAccountView extends Component {
 
     renderRecoverAccountTitle() {
         return (
+            //Enter your email and receive instructions to regain your access.
             <View style={recoverStyle.registerTitleView}>
-                <Text style={recoverStyle.registerTitleText}>{'Recover Account Text'}</Text>
+                <Text style={recoverStyle.registerTitleText}>{'Ingrese su correo electrónico y reciba instrucciones para recuperar su acceso.'}</Text>
             </View>
         )
     }
@@ -54,6 +57,7 @@ export default class RecoverAccountView extends Component {
                 style={recoverStyle.validFormViewContainer}>
                 <View style={recoverStyle.inputWrapper}>
                     <View style={recoverStyle.validFormSubView}>
+                    <View style={recoverStyle.firstFieldView}>
                         <TextInputMaterial
                             blurText={this.state.email}
                             refsValue={commonConstants.TEXT_INPUT_EMAIL}
@@ -74,6 +78,7 @@ export default class RecoverAccountView extends Component {
                             underlineHeight={2}
                             keyboardType="email-address"
                         />
+                    </View>
                     </View>
                 </View>
             </KeyboardAvoidingView>
@@ -97,7 +102,7 @@ export default class RecoverAccountView extends Component {
 
                 <View style={recoverStyle.recoverBackButonView}>
                     <TouchableOpacity onPress={() => { Actions.register() }}>
-                        <Text style={recoverStyle.recoverBackButonText}>Back</Text>
+                        <Text style={recoverStyle.recoverBackButonText}>*Back</Text>
                     </TouchableOpacity>
                 </View>
 

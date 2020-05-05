@@ -48,4 +48,11 @@ export default (styles = StyleSheet.create({
       recoverBackButonText:{
         color:colorConstant.BLUE_COLOR, fontSize:15, textDecorationLine: 'underline'   
       },
+      firstFieldView: {
+        height: 58,
+        borderColor: 'black',
+        borderRadius: 5,
+        borderWidth: 1,
+        //backgroundColor: 'yellow'
+      },
 }));
