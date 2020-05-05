@@ -314,7 +314,7 @@ export default class LoginView extends Component {
 
 
   render() {
-    analytics().setCurrentScreen('HOME');
+    analytics().setCurrentScreen('Login');
     return (
       <ScrollView style={loginStyle.renderContainer} showsVerticalScrollIndicator={false}>
         {this.renderLoginTitle()}
