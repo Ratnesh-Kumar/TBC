@@ -1,35 +1,50 @@
 {
   "project_info": {
-    "project_number": "457339699688",
-    "firebase_url": "https://tbccfirebase.firebaseio.com",
-    "project_id": "tbccfirebase",
-    "storage_bucket": "tbccfirebase.appspot.com"
+    "project_number": "1002284040958",
+    "firebase_url": "https://albya-a3c55.firebaseio.com",
+    "project_id": "albya-a3c55",
+    "storage_bucket": "albya-a3c55.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:457339699688:android:1cade432a0b6531627e45d",
+        "mobilesdk_app_id": "1:1002284040958:android:6a230eee3b8d241dcb9baf",
         "android_client_info": {
           "package_name": "com.tbccapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "457339699688-sitbrsopedlv49p8g5dnip9cn2m5e4ls.apps.googleusercontent.com",
+          "client_id": "1002284040958-4qkj4f6v2c95qf311nbole0d715a7ncd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tbccapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1002284040958-85g2t4o1f5qqve7449c798767sbcb4il.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDbJXF00Uz2f-ncHDkxr0WyqVyw0k8ExMY"
+          "current_key": "AIzaSyCRRDqWv_x0WQDLooWKzBUiV2MX84nQH2E"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "457339699688-sitbrsopedlv49p8g5dnip9cn2m5e4ls.apps.googleusercontent.com",
+              "client_id": "1002284040958-85g2t4o1f5qqve7449c798767sbcb4il.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1002284040958-th2j78jdf4m3r08ibtf20c4a2tn7750f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.TBC.RNAPP"
+              }
             }
           ]
         }

@@ -223,6 +223,9 @@ get_Response_Info = (error, result) => {
   } else {
     //response alert
     console.log('result of fb'+JSON.stringify(result))
+    // const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+    //             firebase.auth().signInWithCredential(credential)
+    //             console.log('login details' + credential)
    // alert(JSON.stringify(result));
     this.setState({ user_name: 'Welcome' + ' ' + result.name });
     this.setState({ token: 'User Token: ' + ' ' + result.id });

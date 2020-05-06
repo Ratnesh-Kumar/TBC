@@ -7,8 +7,8 @@ export default (styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   viewContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     flex: 1
   },
   welcome: {
