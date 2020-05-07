@@ -220,7 +220,25 @@ export default class LoginView extends Component {
         </TouchableOpacity>
       </View>
     )
+    
+}
+get_Response_Info = (error, result) => {
+  if (error) {
+    //Alert for the Error
+    Alert.alert('Error fetching data: ' + error.toString());
+  } else {
+    //response alert
+    console.log('result of fb'+JSON.stringify(result))
+    // const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+    //             firebase.auth().signInWithCredential(credential)
+    //             console.log('login details' + credential)
+   // alert(JSON.stringify(result));
+    this.setState({ user_name: 'Welcome' + ' ' + result.name });
+    this.setState({ token: 'User Token: ' + ' ' + result.id });
+    this.setState({ profile_pic: result.picture.data.url });
+    Actions.tabbar({userName: this.state.user_name})
   }
+}
   get_Response_Info = (error, result) => {
     if (error) {
       //Alert for the Error
@@ -241,6 +259,7 @@ export default class LoginView extends Component {
     console.log('logout of')
     this.setState({ user_name: null, token: null, profile_pic: null });
   };
+
   checkFBLogin() {
     return (
       <View >

@@ -20,7 +20,7 @@ import SettingsScreen from './src/scenes/Settings';
 import FBaseWrite from './src/scenes/FirebaseRW/FBaseWrite';
 import FBaseReadItems from './src/scenes/FirebaseRW/FBaseReadItems';
 import TabIcon from './src/components/TabIcon';
-
+import SlotBooking from '../TBC/src/scenes/More/slotBooking';
 
 import {
   StyleSheet, ActionSheetIOS
@@ -104,6 +104,13 @@ export default class App extends Component {
             type={ActionConst.RESET}
             component={RecoverScreen}
             title="recover"
+            duration={0}
+          />
+           <Scene
+            key="booking"
+            type={ActionConst.RESET}
+            component={SlotBooking}
+            title="Booking"
             duration={0}
           />
 
