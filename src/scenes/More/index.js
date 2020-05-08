@@ -3,10 +3,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../../components/Header';
 import moreStyle from './moreStyle';
+import analytics from '@react-native-firebase/analytics';
 var moreConstant = require('./moreConstants')
 
 export default class MoreScreen extends Component {
   render() {
+    analytics().setCurrentScreen('More');
     return (
       <View style={moreStyle.container}>
         <Header title={moreConstant.MORE_SCREEN} />

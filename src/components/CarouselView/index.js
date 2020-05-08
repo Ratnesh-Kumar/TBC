@@ -55,7 +55,7 @@ export default class CarouselView extends Component {
                         </View>
                     </View>
                     <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0, backgroundColor: (this.props.darkTheme)? colorConstants.GREY_DARK_COLOR_A: colorConstants.GRAY_MEDIUM_COLOR, padding: 10, borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}>
-                        <Text style={{ fontSize: 11, textAlign: "center", color: (this.props.darkTheme)? colorConstants.WHITE_COLOR: colorConstants.GREY_DARK_COLOR_A }}>
+                        <Text style={{ fontSize: 11, textAlign: "center", color: (this.props.darkTheme)? colorConstants.WHITE_COLOR: colorConstants.BLACK_COLOR }}>
                             {item.description}
                         </Text>
                     </View>
