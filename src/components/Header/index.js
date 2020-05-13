@@ -60,7 +60,7 @@ export default class Header extends Component {
     renderLeftView(flag) {
         if (flag) {
             return (<TouchableOpacity testID="browseHeader_button_leftArrow" accessibilityLabel="browseHeader_button_leftArrow" accessible={false} onPress={() => {
-                Actions.pop();
+              (this.props.title === 'Register')?Actions.replace('login'):  Actions.pop();
             }}>
                 <View testID="browseHeader_imageView_leftArrow" accessibilityLabel="browseHeader_imageView_leftArrow" style={headerStyle.leftImageView}>
                     <Image testID="browseHeader_image_leftArrow" accessibilityLabel="browseHeader_image_leftArrow" source={headerConstants.LEFT_ARROW} style={{ marging: 15, height: 20, width: 15, tintColor: 'white' }}>

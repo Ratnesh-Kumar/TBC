@@ -46,6 +46,7 @@ export default class HomeScreen extends BaseComponent {
         return (
             <View style={homeStyle.container}>
                 <SearchBar />
+                <View style={{height:0.7, backgroundColor: colorConstants.GREY_DARK_COLOR, marginTop:10}}/>
                 <View style={homeStyle.viewContainer}>
                     <ScrollView style={{ flex: 1 }}>
                         {this.renderSquareBox()}

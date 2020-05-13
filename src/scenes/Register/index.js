@@ -5,15 +5,17 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   Alert,
+  ScrollView
 } from 'react-native';
 import TextInputMaterial from '../../components/textInputMaterial';
 import PropTypes from 'prop-types';
 import styles from './registerStyle';
 import { Actions } from 'react-native-router-flux';
-
+import Header from '../../components/Header';
 import {  Switch } from 'native-base';
 import registerStyle from './registerStyle';
-
+// import { ScrollView } from 'react-native-gesture-handler';
+var registerConstants = require('./registerConstants');
 var Constants = require('../../config/Constants')
 var colorConstant = require('../../config/colorConstant')
 
@@ -40,12 +42,12 @@ export default class RegisterView extends Component {
   render() {
     return (
       <View style={registerStyle.renderContainer}>
+        <Header title={registerConstants.REGISTER_SCREEN} />
         {this.renderRegisterTitle()}
         {this.renderRegistraionForm()}
         {/*this.renderTermsCondition()*/}
         {this.renderSubmitButton()}
       </View>
-
     );
   }
   renderRegisterTitle() {
@@ -60,7 +62,7 @@ export default class RegisterView extends Component {
       <KeyboardAvoidingView
         behavior="height"
         style={registerStyle.validFormViewContainer}>
-        <View style={registerStyle.inputWrapper}>
+        <ScrollView style={registerStyle.inputWrapper}>
           <View style={registerStyle.validFormSubView}>
             <TextInputMaterial
               blurText={this.state.name}
@@ -70,7 +72,7 @@ export default class RegisterView extends Component {
               maxLength={100}
               autoCapitalize={'none'}
               onChangeText={name => this.setState({ name })}
-              returnKeyType={'done'}
+              returnKeyType={'next'}
               autoCorrect={false}
               isLoginScreen={false}
               style={styles.input}
@@ -94,7 +96,7 @@ export default class RegisterView extends Component {
                 maxLength={100}
                 autoCapitalize={'none'}
                 onChangeText={email => this.setState({ email })}
-                returnKeyType={'done'}
+                returnKeyType={'next'}
                 autoCorrect={false}
                 isLoginScreen={false}
                 style={styles.input}
@@ -117,7 +119,7 @@ export default class RegisterView extends Component {
                 maxLength={100}
                 autoCapitalize={'none'}
                 onChangeText={username => this.setState({ username })}
-                returnKeyType={'done'}
+                returnKeyType={'next'}
                 autoCorrect={false}
                 isLoginScreen={false}
                 style={styles.input}
@@ -141,13 +143,13 @@ export default class RegisterView extends Component {
                 textInputName={this.state.password}
                 ref={Constants.TEXT_INPUT_PASSWORD}
                 label={Constants.LABEL_PASSWORD}
+                secureTextEntry={true} 
                 maxLength={50}
                 underlineHeight={2}
                 isLoginScreen={false}
                 returnKeyType="next"
                 onChangeText={password => this.setState({ password })}
                 autoCapitalize={'none'}
-                returnKeyType={'done'}
                 autoCorrect={false}
                 style={styles.input}
                 placeholderTextColor={Constants.PLACEHOLDER_TEXT_COLOR}
@@ -162,6 +164,7 @@ export default class RegisterView extends Component {
                 blurText={this.state.confirmPass}
                 refsValue={Constants.TEXT_INPUT_CONFIRM_PASSWORD}
                 showIcon={false}
+                secureTextEntry={true} 
                 value={this.state.confirmPass}
                 textInputName={this.state.confirmPass}
                 ref={Constants.TEXT_INPUT_CONFIRM_PASSWORD}
@@ -169,7 +172,6 @@ export default class RegisterView extends Component {
                 maxLength={50}
                 underlineHeight={2}
                 isLoginScreen={false}
-                returnKeyType="next"
                 onChangeText={confirmPass => this.setState({ confirmPass })}
                 autoCapitalize={'none'}
                 returnKeyType={'done'}
@@ -178,7 +180,6 @@ export default class RegisterView extends Component {
                 placeholderTextColor={Constants.PLACEHOLDER_TEXT_COLOR}
                 underlineColorAndroid={Constants.UNDERLINE_COLOR_ANDROID}
                 errorText={Constants.ERROR_TEXT_INPUT_CONFIRM_PASSWORD}
-
               />
             </View>
             {/* <TouchableOpacity
@@ -195,7 +196,7 @@ export default class RegisterView extends Component {
             <Text style={registerStyle.registerTermsText} onPress={() => Alert.alert('terms and conditions')}>{Constants.LABEL_TERMS_CONDITION}</Text>
           </View>
 
-        </View>
+        </ScrollView>
 
       </KeyboardAvoidingView>
     );
