@@ -11,6 +11,9 @@ export default (styles = StyleSheet.create({
     flex: 1, backgroundColor: colorConstant.WHITE_COLOR, justifyContent: 'center', alignItems: 'center'
   },
   containerText:{
-    fontSize: 32, fontWeight: 'bold', color: colorConstant.TBC_COLOR
+    fontSize: 48, fontWeight: 'bold', color: colorConstant.TBC_COLOR,  fontStyle:'italic'
+  },
+  containerSubText:{
+    fontSize: 20, fontWeight: 'bold', color: colorConstant.BLACK_COLOR,  fontStyle:'italic', alignSelf:'flex-end', marginRight: 60
   }
 }));

@@ -22,10 +22,10 @@ export default (styles = StyleSheet.create({
         flex: 1, backgroundColor: colorConstant.WHITE_COLOR
       },
       registerTitleView:{
-        height: constants.SCREEN_HEIGHT / 6, justifyContent: 'center', alignItems: 'center'
+         justifyContent: 'center', alignItems: 'center', marginTop: 20
       },
       registerTitleText:{
-        fontSize: 32, color: colorConstant.TBC_COLOR 
+        fontSize: 24, color: colorConstant.TBC_COLOR 
       },
       validFormViewContainer:{
         alignItems: 'center'
@@ -34,7 +34,7 @@ export default (styles = StyleSheet.create({
         marginTop: 15
       },
       inputWrapper: {
-        width: DEVICE_WIDTH - 20,
+        marginLeft: 20, marginRight: 20, marginBottom: 40
       },
       validFormSubView:{
         paddingLeft: 15, paddingRight: 15

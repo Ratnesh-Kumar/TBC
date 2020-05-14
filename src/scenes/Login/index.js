@@ -17,7 +17,7 @@ import {
 import TextInputMaterial from '../../components/textInputMaterial';
 import PropTypes from 'prop-types';
 import Constants from '../../config/Constants';
-import {ScrollView} from 'react-native-gesture-handler'
+import { ScrollView } from 'react-native-gesture-handler'
 import { Actions } from 'react-native-router-flux';
 import { getFBRealtimeDBFeatureFlags } from '../../config/firebasequery'
 // import Realm from 'realm';
@@ -56,7 +56,7 @@ export default class LoginView extends Component {
       user_name: '',
       token: '',
       userInfo: null,
-      doContinueWithGoogle:false,
+      doContinueWithGoogle: false,
       gettingLoginStatus: true,
       profile_pic: '',
       isTouchIdSupported: false,
@@ -65,7 +65,7 @@ export default class LoginView extends Component {
     this.showPass = this.showPass.bind(this);
     this.buttonAnimated = new Animated.Value(0);
     this.growAnimated = new Animated.Value(0);
-     this.onMessage = this.onMessage.bind(this);
+    this.onMessage = this.onMessage.bind(this);
     // realm = new Realm({ path: 'UserDatabase.realm' });
     //creating temporary user logins
     // realm.write(() => {
@@ -77,7 +77,7 @@ export default class LoginView extends Component {
     this.isTouchIdSupported()
     this.getFireBaseValue();
   }
- 
+
   componentDidMount() {
     //initial configuration
     GoogleSignin.configure({
@@ -99,6 +99,7 @@ export default class LoginView extends Component {
     } else {
       //alert("Please Login");
       console.log('Please Login');
+      
     }
     this.setState({ gettingLoginStatus: false });
   };
@@ -128,9 +129,10 @@ export default class LoginView extends Component {
         showPlayServicesUpdateDialog: true,
       });
       const userInfo = await GoogleSignin.signIn();
-      console.log('User Info --> ', userInfo);
-      this.setState({ userInfo: userInfo,
-        doContinueWithGoogle : true 
+      console.log('######## User Info --> ', userInfo);
+      this.setState({
+        userInfo: userInfo,
+        doContinueWithGoogle: true
       });
     } catch (error) {
       console.log('Message', error.message);
@@ -191,8 +193,8 @@ export default class LoginView extends Component {
       : this.setState({ showPass: true, press: false });
   }
 
-  onMessage = event =>{
-    console.log('########## onMeassage: '+event);
+  onMessage = event => {
+    console.log('########## onMeassage: ' + event);
     if (event && event.nativeEvent.data) {
       if (['cancel', 'error', 'expired'].includes(event.nativeEvent.data)) {
         console.log('error', event.nativeEvent.data);
@@ -207,108 +209,108 @@ export default class LoginView extends Component {
       }
     }
   };
-renderRegisterLink(){
-  return(
-    <View>
-<Text style={{fontSize:15,fontWeight:'normal',marginLeft: 30,marginTop: 10}}>
-  Quiero registrar me
+  renderRegisterLink() {
+    return (
+      <View>
+        <Text style={{ fontSize: 15, fontWeight: 'normal', marginLeft: 30, marginTop: 10 }}>
+          Quiero registrar me
 </Text>
-    </View>
-  )
-}
-get_Response_Info = (error, result) => {
-  if (error) {
-    //Alert for the Error
-    Alert.alert('Error fetching data: ' + error.toString());
-  } else {
-    //response alert
-    console.log('result of fb'+JSON.stringify(result))
-    // const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
-    //             firebase.auth().signInWithCredential(credential)
-    //             console.log('login details' + credential)
-   // alert(JSON.stringify(result));
-    this.setState({ user_name: 'Welcome' + ' ' + result.name });
-    this.setState({ token: 'User Token: ' + ' ' + result.id });
-    this.setState({ profile_pic: result.picture.data.url });
-    Actions.tabbar({userName: this.state.user_name})
+      </View>
+    )
   }
-};
+  get_Response_Info = (error, result) => {
+    if (error) {
+      //Alert for the Error
+      Alert.alert('Error fetching data: ' + error.toString());
+    } else {
+      //response alert
+      console.log('result of fb' + JSON.stringify(result))
+      // const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+      //             firebase.auth().signInWithCredential(credential)
+      //             console.log('login details' + credential)
+      // alert(JSON.stringify(result));
+      this.setState({ user_name: 'Welcome' + ' ' + result.name });
+      this.setState({ token: 'User Token: ' + ' ' + result.id });
+      this.setState({ profile_pic: result.picture.data.url });
+      Actions.tabbar({ userName: this.state.user_name })
+    }
+  };
 
-onLogout = () => {
-  //Clear the state after logout
-  console.log('logout of')
-  this.setState({ user_name: null, token: null, profile_pic: null });
-};
-checkFBLogin(){
-  return( 
-<View >
-<LoginButton
-      style={loginStyle.fbButton}
-      readPermissions={['public_profile']}
-      onLoginFinished={(error, result) => {
-        console.log('fb button pressed')
-        if (error) {
-          console.log(error)
-          alert(error);
-          alert('login has error: ' + result.error);
-        } else if (result.isCancelled) {
-          console.log(result.isCancelled)
-          alert('login is cancelled.');
-        } else {
-          AccessToken.getCurrentAccessToken().then(data => {
-            console.log(data.accessToken.toString())
-           // alert(data.accessToken.toString());
-            const processRequest = new GraphRequest(
-              '/me?fields=name,picture.type(large)',
-              null,
-              this.get_Response_Info
-            );
-            // Start the graph request.
-            new GraphRequestManager().addRequest(processRequest).start();
-          });
-        }
-      }}
-      onLogoutFinished={this.onLogout}
-    />
-</View>
+  onLogout = () => {
+    //Clear the state after logout
+    console.log('logout of')
+    this.setState({ user_name: null, token: null, profile_pic: null });
+  };
+  checkFBLogin() {
+    return (
+      <View >
+        <LoginButton
+          style={loginStyle.fbButton}
+          readPermissions={['public_profile']}
+          onLoginFinished={(error, result) => {
+            console.log('fb button pressed')
+            if (error) {
+              console.log(error)
+              alert(error);
+              alert('login has error: ' + result.error);
+            } else if (result.isCancelled) {
+              console.log(result.isCancelled)
+              alert('login is cancelled.');
+            } else {
+              AccessToken.getCurrentAccessToken().then(data => {
+                console.log(data.accessToken.toString())
+                // alert(data.accessToken.toString());
+                const processRequest = new GraphRequest(
+                  '/me?fields=name,picture.type(large)',
+                  null,
+                  this.get_Response_Info
+                );
+                // Start the graph request.
+                new GraphRequestManager().addRequest(processRequest).start();
+              });
+            }
+          }}
+          onLogoutFinished={this.onLogout}
+        />
+      </View>
 
-  )
-}
-checkGoogleSign(){
-     if (this.state.gettingLoginStatus) {
+    )
+  }
+  checkGoogleSign() {
+    if (this.state.gettingLoginStatus) {
       return (
         <View style={styles.container}>
           <ActivityIndicator size="large" color="#0000ff" />
         </View>
       );
     } else if (this.state.userInfo != null && (this.state.doContinueWithGoogle === true)) {
-        //Showing the User detail
-        Actions.tabbar({userName: this.state.userInfo.user.username})
-        return(
-          <View>
-  <TouchableOpacity style={loginStyle.logoutButton} onPress={this._signOut}>
-              <Text style={loginStyle.logoutButtonText}>Logout</Text>
-            </TouchableOpacity>     
-          </View>
-        )
+      //Showing the User detail
+      Actions.tabbar({ userName: this.state.userInfo.user.username })
+      return (
+        <View>
+          <TouchableOpacity style={loginStyle.logoutButton} onPress={this._signOut}>
+            <Text style={loginStyle.logoutButtonText}>Logout</Text>
+          </TouchableOpacity>
+        </View>
+      )
     }
-       else {
-        //For login showing the Signin button
-        return (
-          <View style={styles.container}>
-            <GoogleSigninButton
-              style={{ width: 312, height: 48 }}
-              size={GoogleSigninButton.Size.Wide}
-              color={GoogleSigninButton.Color.Light}
-              onPress={this._signIn}
-            />
-             
-           
-          </View>
-        );
-      }
+    else {
+      //For login showing the Signin button
+      return (
+        <View style={styles.container}>
+          <GoogleSigninButton
+            style={{ width: 312, height: 48 }}
+            size={GoogleSigninButton.Size.Wide}
+            color={GoogleSigninButton.Color.Light}
+            onPress={this._signIn}
+          />
+
+
+        </View>
+      );
     }
-  
+  }
+
 
   render() {
     return (
@@ -325,7 +327,7 @@ checkGoogleSign(){
           siteKey={siteKey}
           baseUrl={baseUrl}
           languageCode='en'
-          onMessage={()=>this.onMessage()}
+          onMessage={() => this.onMessage()}
         />
       </ScrollView>
     );
@@ -372,11 +374,11 @@ checkGoogleSign(){
   renderLoginTitle() {
     return (
       <View style={loginStyle.loginTitleView}>
-        <View style={{alignItems:'space-around',flexDirection:'row'}}>
+        <View style={{ alignItems: 'space-around', flexDirection: 'row' }}>
           {/* <Image source={logo} style={{height:60,width:80}}/> */}
           <Text style={loginStyle.loginTitleText}>{'A L B Y A'}</Text>
-          </View>
-          <Text style={loginStyle.subHeading}>The New Aesthetic</Text>
+        </View>
+        <Text style={loginStyle.subHeading}>The New Aesthetic</Text>
       </View>
     )
   }
@@ -387,32 +389,32 @@ checkGoogleSign(){
         behavior="height"
         style={loginStyle.validFormViewContainer}>
         <View style={loginStyle.inputWrapper}>
-        <Text style={loginStyle.headingText}>{"Ingressa correo electronico y contrasena: "}</Text>
+          <Text style={loginStyle.headingText}>{"Ingressa correo electronico y contrasena: "}</Text>
           <View style={loginStyle.validFormSubView}>
             <View style={loginStyle.firstFieldView}>
-            <TextInputMaterial
-              blurText={this.state.username}
-              refsValue={commonConstants.TEXT_INPUT_USERNAME}
-              ref={commonConstants.TEXT_INPUT_USERNAME}
-              label={commonConstants.LABEL_USERNAME}
-              maxLength={100}
-              autoCapitalize={'none'}
-              onChangeText={username => this.setState({ username })}
-              returnKeyType={'done'}
-              autoCorrect={false}
-              isLoginScreen={false}
-              style={loginStyle.input}
-              placeholderTextColor={colorConstant.PLACEHOLDER_TEXT_COLOR}
-              underlineColorAndroid={commonConstants.UNDERLINE_COLOR_ANDROID}
-              value={this.state.username}
-              textInputName={this.state.username}
-              errorText={commonConstants.ERROR_TEXT_INPUT_USERNAME}
-              underlineHeight={2}
-              keyboardType="email-address"
-              onSubmitEditing={event => {
-                this.refs.passwordInput.focus();
-              }}
-            />
+              <TextInputMaterial
+                blurText={this.state.username}
+                refsValue={commonConstants.TEXT_INPUT_USERNAME}
+                ref={commonConstants.TEXT_INPUT_USERNAME}
+                label={commonConstants.LABEL_USERNAME}
+                maxLength={100}
+                autoCapitalize={'none'}
+                onChangeText={username => this.setState({ username })}
+                returnKeyType={'done'}
+                autoCorrect={false}
+                isLoginScreen={false}
+                style={loginStyle.input}
+                placeholderTextColor={colorConstant.PLACEHOLDER_TEXT_COLOR}
+                underlineColorAndroid={commonConstants.UNDERLINE_COLOR_ANDROID}
+                value={this.state.username}
+                textInputName={this.state.username}
+                errorText={commonConstants.ERROR_TEXT_INPUT_USERNAME}
+                underlineHeight={2}
+                keyboardType="email-address"
+                onSubmitEditing={event => {
+                  this.refs.passwordInput.focus();
+                }}
+              />
             </View>
 
             <View style={loginStyle.validFormSecondFieldView}>
@@ -465,10 +467,10 @@ checkGoogleSign(){
           </Text>
         </TouchableOpacity>
         <View style={loginStyle.loginRegisterButonView}>
-              <TouchableOpacity onPress={() => Actions.register()}>
-                <Text style={loginStyle.loginRegisterButonText}>I want to register</Text>
-              </TouchableOpacity>
-            </View>
+          <TouchableOpacity onPress={() => Actions.register()}>
+            <Text style={loginStyle.loginRegisterButonText}>I want to register</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -515,7 +517,7 @@ LoginView.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop:10,
+    marginTop: 10,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',

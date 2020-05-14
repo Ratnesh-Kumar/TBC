@@ -43,10 +43,13 @@ export default class RegisterView extends Component {
     return (
       <View style={registerStyle.renderContainer}>
         <Header title={registerConstants.REGISTER_SCREEN} />
+        <ScrollView  style={{ flex: 1}} keyboardShouldPersistTaps={true}
+        showsVerticalScrollIndicator={false}>
         {this.renderRegisterTitle()}
         {this.renderRegistraionForm()}
         {/*this.renderTermsCondition()*/}
-        {this.renderSubmitButton()}
+        
+        </ScrollView>
       </View>
     );
   }
@@ -59,10 +62,10 @@ export default class RegisterView extends Component {
   }
   renderRegistraionForm() {
     return (
-      <KeyboardAvoidingView
-        behavior="height"
-        style={registerStyle.validFormViewContainer}>
-        <ScrollView style={registerStyle.inputWrapper}>
+      // <KeyboardAvoidingView
+      //   behavior="padding"
+      //   style={registerStyle.validFormViewContainer}>
+        <View style={registerStyle.inputWrapper}>
           <View style={registerStyle.validFormSubView}>
             <TextInputMaterial
               blurText={this.state.name}
@@ -84,7 +87,7 @@ export default class RegisterView extends Component {
               underlineHeight={2}
               keyboardType="email-address"
               onSubmitEditing={event => {
-                this.refs.passwordInput.focus();
+                this.refs.loginInputEmail.focus();
               }}
             />
             <View style={registerStyle.validFormSecondFieldView}>
@@ -107,7 +110,9 @@ export default class RegisterView extends Component {
                 errorText={Constants.ERROR_TEXT_INPUT_EMAIL}
                 underlineHeight={2}
                 keyboardType="email-address"
-
+                onSubmitEditing={event => {
+                  this.refs.loginInputName.focus();
+                }}
               />
             </View>
             <View style={registerStyle.validFormSecondFieldView}>
@@ -130,7 +135,9 @@ export default class RegisterView extends Component {
                 errorText={Constants.ERROR_TEXT_INPUT_USERNAME}
                 underlineHeight={2}
                 keyboardType="email-address"
-
+                onSubmitEditing={event => {
+                  this.refs.passwordInput.focus();
+                }}
               />
             </View>
             <View style={registerStyle.validFormSecondFieldView}>
@@ -155,7 +162,9 @@ export default class RegisterView extends Component {
                 placeholderTextColor={Constants.PLACEHOLDER_TEXT_COLOR}
                 underlineColorAndroid={Constants.UNDERLINE_COLOR_ANDROID}
                 errorText={Constants.ERROR_TEXT_INPUT_PASSWORD}
-
+                onSubmitEditing={event => {
+                  this.refs.confirmPasswordInput.focus();
+                }}
               />
             </View>
             <View style={registerStyle.validFormSecondFieldView}>
@@ -195,10 +204,10 @@ export default class RegisterView extends Component {
             </Switch>
             <Text style={registerStyle.registerTermsText} onPress={() => Alert.alert('terms and conditions')}>{Constants.LABEL_TERMS_CONDITION}</Text>
           </View>
+          {this.renderSubmitButton()}
+        </View>
 
-        </ScrollView>
-
-      </KeyboardAvoidingView>
+      // </KeyboardAvoidingView>
     );
   }
 
