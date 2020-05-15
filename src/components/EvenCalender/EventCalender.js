@@ -36,8 +36,8 @@ export default class EventCalendar extends React.Component {
       modalVisible: false,
       title: '',
       summary: '',
-      start: moment().utcOffset('+05:30').format('YYYY-MM-DD hh:mm:ss'),
-      end: moment().utcOffset('+05:30').format('YYYY-MM-DD hh:mm:ss'),
+      start: moment().utcOffset('+05:30').format('YYYY-MM-DD HH:mm:ss'),
+      end: moment().utcOffset('+05:30').format('YYYY-MM-DD HH:mm:ss'),
       startChosenDate: moment().utcOffset('+05:30').format('MMMM-DD'),
       endChosenDate: moment().utcOffset('+05:30').format('MMMM-DD'),
       isStartVisible: false,
@@ -236,7 +236,7 @@ renderSaveButton() {
 handleStartConfirm = (date) => {
     this.setState({
         startChosenDate: moment(date).format('MMMM-DD'),
-        start: moment(date).format('YYYY-MM-DD hh:mm:ss')
+        start: moment(date).format('YYYY-MM-DD HH:mm:ss')
     });
     this.hideDatePicker();
 }
@@ -252,7 +252,7 @@ hideStartDatePicker = () => {
 handleEndConfirm = (date) => {
     this.setState({
         endChosenDate: moment(date).format('MMMM-DD'),
-        end: moment(date).format('YYYY-MM-DD hh:mm:ss')
+        end: moment(date).format('YYYY-MM-DD HH:mm:ss')
     });
     this.hideDatePicker();
 }

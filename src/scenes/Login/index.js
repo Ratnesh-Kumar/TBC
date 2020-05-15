@@ -100,7 +100,7 @@ export default class LoginView extends Component {
     } else {
       //alert("Please Login");
       console.log('Please Login');
-      
+
     }
     this.setState({ gettingLoginStatus: false });
   };
@@ -212,11 +212,11 @@ export default class LoginView extends Component {
   };
   renderRegisterLink() {
     return (
-      <View>
+      <TouchableOpacity onPress={() => Actions.register()}>
         <Text style={{ fontSize: 15, fontWeight: 'normal', marginLeft: 30, marginTop: 10 }}>
           Quiero registrar me
-</Text>
-      </View>
+        </Text>
+      </TouchableOpacity>
     )
   }
   get_Response_Info = (error, result) => {
@@ -468,11 +468,7 @@ export default class LoginView extends Component {
             {commonConstants.LOGIN_BUTTON_TEXT}
           </Text>
         </TouchableOpacity>
-        <View style={loginStyle.loginRegisterButonView}>
-          <TouchableOpacity onPress={() => Actions.register()}>
-            <Text style={loginStyle.loginRegisterButonText}>I want to register</Text>
-          </TouchableOpacity>
-        </View>
+
       </View>
     );
   }
