@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../../components/Header';
+import firebase from 'react-native-firebase';
 import favouriteStyle from './favouriteStyle';
 var favouriteConstant = require('./favouriteConstants')
 
 export default class FavouriteScreen extends Component {
   render() {
+    firebase.analytics().setCurrentScreen('Favourite');
     return (
       <View style={favouriteStyle.container}>
         <Header title={favouriteConstant.FAVOURITE_SCREEN} />

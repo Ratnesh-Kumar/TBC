@@ -14,6 +14,7 @@ import { Actions } from 'react-native-router-flux';
 import Header from '../../components/Header';
 import {  Switch } from 'native-base';
 import registerStyle from './registerStyle';
+import firebase from 'react-native-firebase';
 // import { ScrollView } from 'react-native-gesture-handler';
 var registerConstants = require('./registerConstants');
 var Constants = require('../../config/Constants')
@@ -40,8 +41,9 @@ export default class RegisterView extends Component {
   }
 
   render() {
+    firebase.analytics().setCurrentScreen('Register');
     return (
-      <View style={registerStyle.renderContainer}>
+      <ScrollView scrollEnabled={false} overScrollMode={'always'} keyboardShouldPersistTaps={'handled'} style={registerStyle.renderContainer}>
         <Header title={registerConstants.REGISTER_SCREEN} />
         <ScrollView  style={{ flex: 1}} keyboardShouldPersistTaps={true}
         showsVerticalScrollIndicator={false}>
@@ -50,7 +52,7 @@ export default class RegisterView extends Component {
         {/*this.renderTermsCondition()*/}
         
         </ScrollView>
-      </View>
+      </ScrollView>
     );
   }
   renderRegisterTitle() {
@@ -67,6 +69,7 @@ export default class RegisterView extends Component {
       //   style={registerStyle.validFormViewContainer}>
         <View style={registerStyle.inputWrapper}>
           <View style={registerStyle.validFormSubView}>
+          <View style={registerStyle.firstFieldView}>
             <TextInputMaterial
               blurText={this.state.name}
               refsValue={Constants.TEXT_INPUT_NAME}
@@ -90,6 +93,8 @@ export default class RegisterView extends Component {
                 this.refs.loginInputEmail.focus();
               }}
             />
+            </View>
+            
             <View style={registerStyle.validFormSecondFieldView}>
               <TextInputMaterial
                 blurText={this.state.email}
@@ -217,7 +222,7 @@ export default class RegisterView extends Component {
     return (
           <View style={registerStyle.registerSumbitButtonView}>
             <TouchableOpacity
-              style={registerStyle.button}
+              style={this.state.acceptTermsCondition?registerStyle.enableButton:registerStyle.disableButton}
               disabled={!this.state.acceptTermsCondition}
               onPress={() => {Alert.alert('clicked') }}
               activeOpacity={1}>

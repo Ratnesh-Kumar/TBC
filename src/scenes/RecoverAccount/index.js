@@ -9,6 +9,7 @@ import TextInputMaterial from '../../components/textInputMaterial';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
 import recoverStyle from './recoverAccountStyle';
+import firebase from 'react-native-firebase';
 var commonConstants = require('../../config/Constants');
 
 
@@ -21,6 +22,7 @@ export default class RecoverAccountView extends Component {
 
     }
     render() {
+        firebase.analytics().setCurrentScreen('Recover Account');
         return (
             <View style={recoverStyle.renderContainer}>
                 {this.renderRecoverAccountTitle()}
@@ -43,7 +45,7 @@ export default class RecoverAccountView extends Component {
                 behavior="height"
                 style={recoverStyle.validFormViewContainer}>
                 <View style={recoverStyle.inputWrapper}>
-                    <View style={recoverStyle.validFormSubView}>
+                <View style={recoverStyle.firstFieldView}>
                         <TextInputMaterial
                             blurText={this.state.email}
                             refsValue={commonConstants.TEXT_INPUT_EMAIL}

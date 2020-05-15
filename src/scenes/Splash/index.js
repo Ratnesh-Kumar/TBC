@@ -6,6 +6,7 @@ import { TBC_COLOR } from '../../config/colorConstant';
 var colorConstant = require('../../config/colorConstant')
 import splashStyle from './splashStyle'
 var splashConstant = require('./splashConstants');
+import firebase from 'react-native-firebase';
 
 export default class splashscreen extends Component {
 
@@ -16,6 +17,7 @@ export default class splashscreen extends Component {
   }
 
   render() {
+    firebase.analytics().setCurrentScreen('Splash');
     return (
       <View style={splashStyle.container}>
         <Text style={splashStyle.containerText}>{splashConstant.SPLASH_SCREEN}</Text>

@@ -3,10 +3,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from '../../components/Header';
 import settingsStyle from './settingsStyle';
+import firebase from 'react-native-firebase';
 var settingConstants = require('./settingsConstants')
 
 export default class SettingScreen extends Component {
   render() {
+    firebase.analytics().setCurrentScreen('Settings');
     return (
       <View style={settingsStyle.container}>
         <Header title={settingConstants.SETTINGS_SCREEN} />
