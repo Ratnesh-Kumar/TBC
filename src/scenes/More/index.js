@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dimensions, View, Text, Alert } from 'react-native';
 import firebase from 'react-native-firebase';
-import EventCalendar from '../../components/EvenCalender/EventCalender';
+import EventCalendar from '../../components/EventCalender/EventCalender';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { db } from '../../config/db';
 let { width } = Dimensions.get('window');
