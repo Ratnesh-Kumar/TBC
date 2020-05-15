@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1002284040958-i96m0ka3bm3r84p9op5356iqrksuttjf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tbccapp",
+            "certificate_hash": "15d2b96773a5bf88a23ca11a5c379c192ebddc09"
+          }
+        },
+        {
           "client_id": "1002284040958-4qkj4f6v2c95qf311nbole0d715a7ncd.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

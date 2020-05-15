@@ -21,6 +21,7 @@ export default class splashscreen extends Component {
     return (
       <View style={splashStyle.container}>
         <Text style={splashStyle.containerText}>{splashConstant.SPLASH_SCREEN}</Text>
+    <Text style={splashStyle.containerSubText}>{'The New Aesthetic'}</Text>
       </View>
     );
   }
