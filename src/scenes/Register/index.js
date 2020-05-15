@@ -14,6 +14,7 @@ import { Actions } from 'react-native-router-flux';
 import Header from '../../components/Header';
 import {  Switch } from 'native-base';
 import registerStyle from './registerStyle';
+import firebase from 'react-native-firebase';
 // import { ScrollView } from 'react-native-gesture-handler';
 var registerConstants = require('./registerConstants');
 var Constants = require('../../config/Constants')
@@ -40,14 +41,15 @@ export default class RegisterView extends Component {
   }
 
   render() {
+    firebase.analytics().setCurrentScreen('Register');
     return (
-      <View style={registerStyle.renderContainer}>
+      <ScrollView scrollEnabled={false} overScrollMode={'always'} keyboardShouldPersistTaps={'handled'} style={registerStyle.renderContainer}>
         <Header title={registerConstants.REGISTER_SCREEN} />
         {this.renderRegisterTitle()}
         {this.renderRegistraionForm()}
         {/*this.renderTermsCondition()*/}
         {this.renderSubmitButton()}
-      </View>
+      </ScrollView>
     );
   }
   renderRegisterTitle() {
@@ -64,6 +66,7 @@ export default class RegisterView extends Component {
         style={registerStyle.validFormViewContainer}>
         <ScrollView style={registerStyle.inputWrapper}>
           <View style={registerStyle.validFormSubView}>
+          <View style={registerStyle.firstFieldView}>
             <TextInputMaterial
               blurText={this.state.name}
               refsValue={Constants.TEXT_INPUT_NAME}
@@ -84,9 +87,11 @@ export default class RegisterView extends Component {
               underlineHeight={2}
               keyboardType="email-address"
               onSubmitEditing={event => {
-                this.refs.passwordInput.focus();
+                this.refs.loginInputEmail.focus();
               }}
             />
+            </View>
+            
             <View style={registerStyle.validFormSecondFieldView}>
               <TextInputMaterial
                 blurText={this.state.email}
@@ -107,7 +112,9 @@ export default class RegisterView extends Component {
                 errorText={Constants.ERROR_TEXT_INPUT_EMAIL}
                 underlineHeight={2}
                 keyboardType="email-address"
-
+                onSubmitEditing={event => {
+                  this.refs.loginInputName.focus();
+                }}
               />
             </View>
             <View style={registerStyle.validFormSecondFieldView}>
@@ -130,6 +137,9 @@ export default class RegisterView extends Component {
                 errorText={Constants.ERROR_TEXT_INPUT_USERNAME}
                 underlineHeight={2}
                 keyboardType="email-address"
+                onSubmitEditing={event => {
+                  this.refs.passwordInput.focus();
+                }}
 
               />
             </View>
@@ -155,6 +165,9 @@ export default class RegisterView extends Component {
                 placeholderTextColor={Constants.PLACEHOLDER_TEXT_COLOR}
                 underlineColorAndroid={Constants.UNDERLINE_COLOR_ANDROID}
                 errorText={Constants.ERROR_TEXT_INPUT_PASSWORD}
+                onSubmitEditing={event => {
+                  this.refs.confirmPasswordInput.focus();
+                }}
 
               />
             </View>
@@ -208,7 +221,7 @@ export default class RegisterView extends Component {
     return (
           <View style={registerStyle.registerSumbitButtonView}>
             <TouchableOpacity
-              style={registerStyle.button}
+              style={this.state.acceptTermsCondition?registerStyle.enableButton:registerStyle.disableButton}
               disabled={!this.state.acceptTermsCondition}
               onPress={() => {Alert.alert('clicked') }}
               activeOpacity={1}>

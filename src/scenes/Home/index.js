@@ -12,6 +12,7 @@ var constants = require('../../config/Constants')
 var colorConstants = require('../../config/colorConstant')
 var homeConstants = require('./homeConstants');
 import homeStyle from './homeStyle';
+import firebase from 'react-native-firebase';
 
 export default class HomeScreen extends BaseComponent {
     constructor(props) {
@@ -43,6 +44,7 @@ export default class HomeScreen extends BaseComponent {
         return responseData;
     }
     render() {
+        firebase.analytics().setCurrentScreen('Home');
         return (
             <View style={homeStyle.container}>
                 <SearchBar />
