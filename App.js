@@ -20,6 +20,7 @@ import SettingsScreen from './src/scenes/Settings';
 import FBaseWrite from './src/scenes/FirebaseRW/FBaseWrite';
 import FBaseReadItems from './src/scenes/FirebaseRW/FBaseReadItems';
 import TabIcon from './src/components/TabIcon';
+import CalenderEvent from './src/scenes/More/calenderEvent';
 
 import {
   StyleSheet, ActionSheetIOS
@@ -146,6 +147,7 @@ export default class App extends Component {
         {/* Tab and it's scenes */}
         <Scene key="plusTab" title="Plus" icon={TabIcon} resource={require('./src/public/images/tabbar_more.png')} hideNavBar>
           <Scene key="more" component={MoreScreen} title="More" />
+          <Scene key="calenderEvent" component={CalenderEvent} title="Calender Event" />
         </Scene>
       </Scene>
     )

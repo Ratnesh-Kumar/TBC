@@ -1,79 +1,72 @@
 import React from 'react';
-import { Dimensions, View, Text, Alert } from 'react-native';
+import { Dimensions, View, Text, Alert, TouchableOpacity } from 'react-native';
 import firebase from 'react-native-firebase';
-import EventCalendar from '../../components/EventCalender/EventCalender';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import * as AddCalendarEvent from 'react-native-add-calendar-event';
+import Header from '../../components/Header';
+import moreStyle from './moreStyle';
+var moreConstants = require('./moreConstants');
+var colorConstants = require('../../config/colorConstant');
+import {
+    GoogleSignin,
+    GoogleSigninButton,
+    statusCodes,
+  } from 'react-native-google-signin';
 import { db } from '../../config/db';
 let { width } = Dimensions.get('window');
 import moment from 'moment';
+import { Actions } from 'react-native-router-flux';
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      eventsTest:[],
-      
-    };
-  }
-    componentDidMount=()=>{
-    let that=this;
-      const uid = 'CM7BJ7OyWXhGyDwLX1DMqabWfY42';
-      db.ref('/appointmentData').child(uid).on('value', function (snapshot) {
-        let data = snapshot.val();
-        let eventsTest = Object.values(data);
-        that.setState({eventsTest});
+    constructor(props) {
+        super(props);
+        this.state = {
+            eventsTest: [],
 
-    });
-      
+        };
     }
-    
-    showCalendarEventWithId = (eventId) => {
-      const eventConfig = {
-        eventId,
-        allowsEditing: false,
-        allowsCalendarPreview: true,
-        navigationBarIOS: {
-          tintColor: 'orange',
-          backgroundColor: 'green',
-        },
-      };
-  
-      AddCalendarEvent.presentEventViewingDialog(eventConfig)
-        .then(eventInfo => {
-          //alert('eventInfo -> ' + JSON.stringify(eventInfo));
-        })
-        .catch((error) => {
-          alert('Error -> ' + error);
-        });
-    };
-  
-  
+    componentDidMount = () => {
+    }
 
-  _eventTapped(event) {
-    this.showCalendarEventWithId(event.eventId);
-    //alert(JSON.stringify(event.title));
-  }
 
-  render() {
-    firebase.analytics().setCurrentScreen('More');
-    console.log(this.state.eventsTest)
-    return (
 
-      <View style={{ flex: 1, marginTop: 20 }}>
-        <EventCalendar
-          eventTapped={this._eventTapped.bind(this)}
-          events={this.state.eventsTest}
-          width={width}
-          initDate={moment().utcOffset('+05:30').format('YYYY-MM-DD')}
-          scrollToFirst
-          upperCaseHeader
-          uppercase
-          scrollToFirst={false}
-          
-        />
-       
-      </View>
 
-    );
-  }
+    _eventTapped(event) {
+        alert(JSON.stringify(event));
+    }
+
+    render() {
+        firebase.analytics().setCurrentScreen('More');
+        console.log(this.state.eventsTest)
+        return (
+
+            <View style={moreStyle.renderContainer}>
+                <Header title={moreConstants.MORE_SCREEN} />
+                <View style={{marginTop: 20}}>
+                    <TouchableOpacity style={{}} onPress={()=>{
+                        this.logoutFromApp()
+                    }}>
+                        <View style={{height: 1, backgroundColor: colorConstants.GRAY_MEDIUM_COLOR}}/>
+                        <Text style={{ fontSize: 18, paddingLeft: 15, paddingTop: 10, paddingBottom: 10,  backgroundColor: colorConstants.WHITE_COLOR }}>Logout</Text>
+                        <View style={{height: 1, backgroundColor: colorConstants.GRAY_MEDIUM_COLOR}}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{marginTop: 15}} onPress={()=>{Actions.calenderEvent()}}>
+                        <View style={{height: 1, backgroundColor: colorConstants.GRAY_MEDIUM_COLOR}}/>
+                        <Text style={{ fontSize: 18, paddingLeft: 15, paddingTop: 10, paddingBottom: 10,  backgroundColor: colorConstants.WHITE_COLOR }}>Calender Event</Text>
+                        <View style={{height: 1, backgroundColor: colorConstants.GRAY_MEDIUM_COLOR}}/>
+                    </TouchableOpacity>
+                </View>
+            </View>
+
+        );
+    }
+
+    async logoutFromApp(){
+        try {
+            await GoogleSignin.revokeAccess();
+            await GoogleSignin.signOut();
+            this.setState({ userInfo: null }); // Remove the user from your app's state as well
+            Actions.login()
+          } catch (error) {
+            Actions.login()
+            console.error(error);
+          }
+    }
 }

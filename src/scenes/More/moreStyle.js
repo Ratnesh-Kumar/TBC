@@ -31,7 +31,7 @@ export default (styles = StyleSheet.create({
     borderWidth: 1,
   },
   renderContainer: {
-    flex: 1, backgroundColor: colorConstant.WHITE_COLOR
+    flex: 1, backgroundColor: colorConstant.GRAY_LIGHT_COLOR
   },
   registerSumbitButtonView: {
     paddingLeft: 30, paddingRight: 30, marginTop: 20

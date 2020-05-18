@@ -225,7 +225,7 @@ export default class LoginView extends Component {
       Alert.alert('Error fetching data: ' + error.toString());
     } else {
       //response alert
-      console.log('result of fb' + JSON.stringify(result))
+      console.log('######### result of fb' + JSON.stringify(result))
       // const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
       //             firebase.auth().signInWithCredential(credential)
       //             console.log('login details' + credential)
@@ -247,13 +247,14 @@ export default class LoginView extends Component {
       <View >
         <LoginButton
           style={loginStyle.fbButton}
-          readPermissions={['public_profile']}
+          publishPermissions={["email", "public_profile"]}
+          permissions={["email", "public_profile"]}
           onLoginFinished={(error, result) => {
             console.log('fb button pressed')
             if (error) {
-              console.log(error)
+              console.log("###### : error")
               alert(error);
-              alert('login has error: ' + result.error);
+              alert('login has error: ' + error);
             } else if (result.isCancelled) {
               console.log(result.isCancelled)
               alert('login is cancelled.');
