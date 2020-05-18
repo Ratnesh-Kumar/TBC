@@ -198,12 +198,12 @@ export default class EventCalendar extends React.Component {
     }
   };
 
-   utcDateToString = (momentInUTC) => {
+   utcDateToString = (momentInUTC: moment): string => {
     let s = moment.utc(momentInUTC).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
     return s;
   };
 
-  addToCalendar (title, startDateUTC) {
+  addToCalendar (title: string, startDateUTC: moment) {
           const {start,end,summary}=this.state;
     const eventConfig = {
       title,
@@ -218,13 +218,18 @@ export default class EventCalendar extends React.Component {
     };
 
     AddCalendarEvent.presentEventCreatingDialog(eventConfig)
-      .then((eventInfo: { calendarItemIdentifier, eventIdentifier}) => {
+      .then(
+        (eventInfo: {
+          calendarItemIdentifier: string,
+          eventIdentifier: string,
+        }) => {
+         
          // alert('eventInfo -> ' + JSON.stringify(eventInfo));
           this.setState({eventId:eventInfo.eventIdentifier});
           this.handleSaveButton();
         }
       )
-      .catch((error) => {
+      .catch((error: string) => {
         // handle error such as when user rejected permissions
         alert('Error -> ' + error);
       });
@@ -360,7 +365,7 @@ renderEventForm() {
                     <View style={{ paddingLeft: 10, flexDirection: 'row', }}>
                         <View style={{ flex: 1 / 2 }}>
 
-                            <TouchableOpacity style={eventStyle.datePicker} onPress={this.showStartDatePicker} >
+                            <TouchableOpacity style={eventStyle.datePicker} onPress={()=>this.showStartDatePicker()} >
                                 <Text>Start Date</Text>
                                 <Text style={eventStyle.datePickerText}>{this.state.startChosenDate}</Text>
                             </TouchableOpacity>
@@ -373,7 +378,7 @@ renderEventForm() {
                             />
                         </View>
                         <View style={{ flex: 1 / 2, flexDirection: 'row-reverse', }}>
-                            <TouchableOpacity style={eventStyle.datePicker} onPress={this.showEndDatePicker} >
+                            <TouchableOpacity style={eventStyle.datePicker} onPress={()=>this.showEndDatePicker()} >
                                 <Text>End Date</Text>
                                 <Text style={eventStyle.datePickerText}>{this.state.endChosenDate}</Text>
                             </TouchableOpacity>
