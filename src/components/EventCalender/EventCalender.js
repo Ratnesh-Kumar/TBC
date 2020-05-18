@@ -13,6 +13,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import TextInputMaterial from '../textInputMaterial';
 import _ from 'lodash';
 import moment from 'moment';
+import * as AddCalendarEvent from 'react-native-add-calendar-event';
 import React from 'react';
 import { db } from '../../config/db';
 var Constants = require('../../config/Constants')
@@ -36,10 +37,11 @@ export default class EventCalendar extends React.Component {
       modalVisible: false,
       title: '',
       summary: '',
-      start: moment().utcOffset('+05:30').format('YYYY-MM-DD HH:mm:ss'),
-      end: moment().utcOffset('+05:30').format('YYYY-MM-DD HH:mm:ss'),
+      start: moment().utc().format('YYYY-MM-DDTHH:mm:ss.SSS[Z]'),
+      end: moment().utc().format('YYYY-MM-DDTHH:mm:ss.SSS[Z]'),
       startChosenDate: moment().utcOffset('+05:30').format('MMMM-DD'),
       endChosenDate: moment().utcOffset('+05:30').format('MMMM-DD'),
+      eventId:'',
       isStartVisible: false,
       isEndVisible: false,
     };
@@ -195,19 +197,54 @@ export default class EventCalendar extends React.Component {
       );
     }
   };
+
+   utcDateToString = (momentInUTC) => {
+    let s = moment.utc(momentInUTC).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
+    return s;
+  };
+
+  addToCalendar (title, startDateUTC) {
+          const {start,end,summary}=this.state;
+    const eventConfig = {
+      title,
+      startDate: this.utcDateToString(start),
+      endDate: this.utcDateToString(end),
+      notes: summary,
+      navigationBarIOS: {
+        tintColor: 'orange',
+        backgroundColor: 'green',
+        titleColor: 'blue',
+      },
+    };
+
+    AddCalendarEvent.presentEventCreatingDialog(eventConfig)
+      .then((eventInfo: { calendarItemIdentifier, eventIdentifier}) => {
+         // alert('eventInfo -> ' + JSON.stringify(eventInfo));
+          this.setState({eventId:eventInfo.eventIdentifier});
+          this.handleSaveButton();
+        }
+      )
+      .catch((error) => {
+        // handle error such as when user rejected permissions
+        alert('Error -> ' + error);
+      });
+  };
+
   handleSaveButton = () => {
-    const { title, summary, start, end } = this.state;
+    const { title, summary, start, end,eventId } = this.state;
     if (title == '' || summary == '')
-        Alert.alert('Alert', 'title or summary is empty');
+        alert('Alert', 'title or summary is empty');
     else {
+      
         const uid = 'CM7BJ7OyWXhGyDwLX1DMqabWfY42';
-        db.ref('/appointmentData').child(uid).push({ title: title, summary: summary, start: start, end: end })
+        db.ref('/appointmentData').child(uid).push({ eventId: eventId,title: title, summary: summary, start: start, end: end })
             .then(() => console.log('Data set.'))
             .catch((error) => {
                 console.log('error ', error)
             });
-        Alert.alert('SAVED');
+        //Alert.alert('SAVED');
         this.toggleModal(!this.state.modalVisible)
+        //this.addToCalendar(title,moment.utc());
     }
 }
 renderSaveButton() {
@@ -215,7 +252,7 @@ renderSaveButton() {
         <View style={eventStyle.registerSumbitButtonView}>
             <TouchableOpacity
                 style={eventStyle.saveButton}
-                onPress={() => this.handleSaveButton(this)}
+                onPress={() => this.addToCalendar(this.state.title,moment.utc())}
                 activeOpacity={1}>
                 {}
                 <Text
@@ -236,7 +273,7 @@ renderSaveButton() {
 handleStartConfirm = (date) => {
     this.setState({
         startChosenDate: moment(date).format('MMMM-DD'),
-        start: moment(date).format('YYYY-MM-DD HH:mm:ss')
+        start: moment(date).utc().format('YYYY-MM-DDTHH:mm:ss.SSS[Z]'),
     });
     this.hideDatePicker();
 }
@@ -252,7 +289,7 @@ hideStartDatePicker = () => {
 handleEndConfirm = (date) => {
     this.setState({
         endChosenDate: moment(date).format('MMMM-DD'),
-        end: moment(date).format('YYYY-MM-DD HH:mm:ss')
+        end: moment(date).utc().format('YYYY-MM-DDTHH:mm:ss.SSS[Z]'),
     });
     this.hideDatePicker();
 }
@@ -332,7 +369,7 @@ renderEventForm() {
                                 mode="datetime"
                                 onConfirm={this.handleStartConfirm}
                                 onCancel={this.hideStartDatePicker}
-                                is24Hour={true}
+                               
                             />
                         </View>
                         <View style={{ flex: 1 / 2, flexDirection: 'row-reverse', }}>
@@ -345,7 +382,7 @@ renderEventForm() {
                                 mode="datetime"
                                 onConfirm={this.handleEndConfirm}
                                 onCancel={this.hideEndDatePicker}
-                                is24Hour={true}
+                            
                             />
                         </View>
                     </View>

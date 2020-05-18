@@ -3,6 +3,7 @@ import { Dimensions, View, Text, Alert } from 'react-native';
 import firebase from 'react-native-firebase';
 import EventCalendar from '../../components/EventCalender/EventCalender';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import * as AddCalendarEvent from 'react-native-add-calendar-event';
 import { db } from '../../config/db';
 let { width } = Dimensions.get('window');
 import moment from 'moment';
@@ -26,11 +27,31 @@ export default class App extends React.Component {
       
     }
     
+    showCalendarEventWithId = (eventId) => {
+      const eventConfig = {
+        eventId,
+        allowsEditing: false,
+        allowsCalendarPreview: true,
+        navigationBarIOS: {
+          tintColor: 'orange',
+          backgroundColor: 'green',
+        },
+      };
+  
+      AddCalendarEvent.presentEventViewingDialog(eventConfig)
+        .then(eventInfo => {
+          //alert('eventInfo -> ' + JSON.stringify(eventInfo));
+        })
+        .catch((error) => {
+          alert('Error -> ' + error);
+        });
+    };
   
   
 
   _eventTapped(event) {
-    alert(JSON.stringify(event));
+    this.showCalendarEventWithId(event.eventId);
+    //alert(JSON.stringify(event.title));
   }
 
   render() {
