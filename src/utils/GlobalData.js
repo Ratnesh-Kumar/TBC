@@ -4,6 +4,8 @@ import {
 } from 'react-native';
 var singleInstance = null;
 var userData = false;
+var loginType = ""
+
 
 export class GlobalData extends Component {
     constructor() {
@@ -21,6 +23,14 @@ export class GlobalData extends Component {
 
     getUserData(){
         return userData;
+    }
+
+    setLoginType(text){
+        loginType = text;
+    }
+
+    getLoginType(){
+        return loginType;
     }
 }
 

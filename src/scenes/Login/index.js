@@ -16,7 +16,6 @@ import {
 } from 'react-native';
 import TextInputMaterial from '../../components/textInputMaterial';
 import PropTypes from 'prop-types';
-import Constants from '../../config/Constants';
 import { ScrollView } from 'react-native-gesture-handler'
 import { Actions } from 'react-native-router-flux';
 import { getFBRealtimeDBFeatureFlags } from '../../config/firebasequery'
@@ -25,11 +24,14 @@ import { TBC_COLOR } from '../../config/colorConstant';
 import TouchID from 'react-native-touch-id';
 import ConfirmGoogleCaptcha from 'react-native-google-recaptcha-v2';
 import loginStyle from './LoginStyle';
+import GlobalData from '../../utils/GlobalData';
+var globalData = new GlobalData();
 import {
   LoginButton,
   AccessToken,
   GraphRequest,
   GraphRequestManager,
+  LoginManager 
 } from 'react-native-fbsdk';
 import {
   GoogleSignin,
@@ -37,7 +39,7 @@ import {
   statusCodes,
 } from 'react-native-google-signin';
 import firebase from 'react-native-firebase';
-var commonConstants = require('../../config/Constants');
+var constants = require('../../config/Constants');
 var colorConstant = require('../../config/colorConstant')
 let realm;
 const siteKey = '6Le2394UAAAAAHlpjMsukQVuXNAMFLClkynBAQTh';
@@ -233,6 +235,7 @@ export default class LoginView extends Component {
       this.setState({ user_name: 'Welcome' + ' ' + result.name });
       this.setState({ token: 'User Token: ' + ' ' + result.id });
       this.setState({ profile_pic: result.picture.data.url });
+      globalData.setLoginType(constants.LOGIN_TYPE_FACEBOOK)
       Actions.tabbar({ userName: this.state.user_name })
     }
   };
@@ -250,18 +253,19 @@ export default class LoginView extends Component {
           publishPermissions={["email", "public_profile"]}
           permissions={["email", "public_profile"]}
           onLoginFinished={(error, result) => {
-            console.log('fb button pressed')
+            console.log('######### fb button pressed')
             if (error) {
               console.log("###### : error")
               alert(error);
-              alert('login has error: ' + error);
+              alert('##### login has error: ' + error);
             } else if (result.isCancelled) {
               console.log(result.isCancelled)
               alert('login is cancelled.');
             } else {
               AccessToken.getCurrentAccessToken().then(data => {
-                console.log(data.accessToken.toString())
+                // console.log(data.accessToken.toString())
                 // alert(data.accessToken.toString());
+                console.log("############## access token 123 : "+JSON.stringify(data))
                 const processRequest = new GraphRequest(
                   '/me?fields=name,picture.type(large)',
                   null,
@@ -287,6 +291,7 @@ export default class LoginView extends Component {
       );
     } else if (this.state.userInfo != null && (this.state.doContinueWithGoogle === true)) {
       //Showing the User detail
+      globalData.setLoginType(constants.LOGIN_TYPE_GOOGLE)
       Actions.tabbar({ userName: this.state.userInfo.user.username })
       return (
         <View>
@@ -397,9 +402,9 @@ export default class LoginView extends Component {
             <View style={loginStyle.firstFieldView}>
               <TextInputMaterial
                 blurText={this.state.username}
-                refsValue={commonConstants.TEXT_INPUT_USERNAME}
-                ref={commonConstants.TEXT_INPUT_USERNAME}
-                label={commonConstants.LABEL_USERNAME}
+                refsValue={constants.TEXT_INPUT_USERNAME}
+                ref={constants.TEXT_INPUT_USERNAME}
+                label={constants.LABEL_USERNAME}
                 maxLength={100}
                 autoCapitalize={'none'}
                 onChangeText={username => this.setState({ username })}
@@ -408,10 +413,10 @@ export default class LoginView extends Component {
                 isLoginScreen={false}
                 style={loginStyle.input}
                 placeholderTextColor={colorConstant.PLACEHOLDER_TEXT_COLOR}
-                underlineColorAndroid={commonConstants.UNDERLINE_COLOR_ANDROID}
+                underlineColorAndroid={constants.UNDERLINE_COLOR_ANDROID}
                 value={this.state.username}
                 textInputName={this.state.username}
-                errorText={commonConstants.ERROR_TEXT_INPUT_USERNAME}
+                errorText={constants.ERROR_TEXT_INPUT_USERNAME}
                 underlineHeight={2}
                 keyboardType="email-address"
                 onSubmitEditing={event => {
@@ -424,12 +429,12 @@ export default class LoginView extends Component {
               <TextInputMaterial
                 secureTextEntry={this.state.showPass}
                 blurText={this.state.password}
-                refsValue={commonConstants.TEXT_INPUT_PASSWORD}
+                refsValue={constants.TEXT_INPUT_PASSWORD}
                 showIcon={false}
                 value={this.state.password}
                 textInputName={this.state.password}
-                ref={commonConstants.TEXT_INPUT_PASSWORD}
-                label={commonConstants.LABEL_PASSWORD}
+                ref={constants.TEXT_INPUT_PASSWORD}
+                label={constants.LABEL_PASSWORD}
                 maxLength={50}
                 underlineHeight={2}
                 isLoginScreen={false}
@@ -441,7 +446,7 @@ export default class LoginView extends Component {
                 style={loginStyle.input}
                 placeholderTextColor={colorConstant.PLACEHOLDER_TEXT_COLOR}
                 underlineColorAndroid={colorConstant.UNDERLINE_COLOR_ANDROID}
-                errorText={commonConstants.ERROR_TEXT_INPUT_PASSWORD}
+                errorText={constants.ERROR_TEXT_INPUT_PASSWORD}
                 onFocus={() => this.inputFocused.bind(this)}
               />
             </View>
@@ -449,7 +454,7 @@ export default class LoginView extends Component {
                         activeOpacity={0.7}
                         style={loginStyle.btnEye}
                         onPress={this.showPass}>
-                        <Image source={commonConstants.EYE_ICON} style={loginStyle.iconEye} />
+                        <Image source={constants.EYE_ICON} style={loginStyle.iconEye} />
                     </TouchableOpacity>  */}
           </View>
         </View>
@@ -461,12 +466,15 @@ export default class LoginView extends Component {
       <View style={loginStyle.loginSumbitButtonView}>
         <TouchableOpacity
           style={loginStyle.button}
-          onPress={() => Actions.tabbar()}
+          onPress={() => {
+            globalData.setLoginType(constants.LOGIN_TYPE_GENERAL)
+            Actions.tabbar();
+          }}
           activeOpacity={1}>
           {}
           <Text
             style={loginStyle.loginSubmitButtonText}>
-            {commonConstants.LOGIN_BUTTON_TEXT}
+            {constants.LOGIN_BUTTON_TEXT}
           </Text>
         </TouchableOpacity>
 
