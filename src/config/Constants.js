@@ -40,3 +40,6 @@ export const ERROR_TEXT_INPUT_TITLE='Please enter title';
 export const TEXT_INPUT_SUMMARY='eventInputSummary';
 export const LABEL_SUMMARY='Summary';
 export const ERROR_TEXT_INPUT_SUMMARY='Please enter summary';
+export const LOGIN_TYPE_GENERAL = "login_type_general";
+export const LOGIN_TYPE_FACEBOOK = "login_type_facebook";
+export const LOGIN_TYPE_GOOGLE = "login_type_google";
