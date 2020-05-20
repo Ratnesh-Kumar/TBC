@@ -11,7 +11,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      eventsTest:[],
+      eventsTest:[
+        {
+          start:'',end:'',title:'',summary:''
+        }
+      ],
       
     };
   }
@@ -19,9 +23,15 @@ export default class App extends React.Component {
     let that=this;
       const uid = 'CM7BJ7OyWXhGyDwLX1DMqabWfY42';
       db.ref('/appointmentData').child(uid).on('value', function (snapshot) {
+        if (snapshot.exists()){
         let data = snapshot.val();
         let eventsTest = Object.values(data);
+        console.log(eventsTest);
         that.setState({eventsTest});
+        }
+        else{
+          
+        }
 
     });
       
