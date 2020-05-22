@@ -25,8 +25,8 @@ export default class HomeSearchBar extends Component {
             }}
             style={{ height: SCREEN_WIDTH / 3 - 30, width: SCREEN_WIDTH / 3 - 20, backgroundColor: colorConstants.GRAY_LIGHT_COLOR, margin: 10 }}>
                 <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-                    <Image source={require('../../public/images/thumbnail_placeholder.png')}
-                        style={{ height: 40, width: 40, resizeMode: 'contain' }} />
+                    <Image source={{uri:"https://images.pexels.com/photos/2954199/pexels-photo-2954199.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"}}
+                        style={{ height: 100, width: 100, resizeMode: 'contain' }} />
                 </View>
                     <CardView
                         cardElevation={2}
