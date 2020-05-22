@@ -9,44 +9,44 @@ export const TOP_HOME_CAROUSEL_TITLE = "Explorar experiencias";
 export const BOTTOM_HOME_CAROUSEL_TITLE = "Promociones";
 export const CAROUSEL_HOME_TOP_ARRAY = [{
     "id": "101",
-    "imageURL": "URL",
+    "imageURL": "https://images.pexels.com/photos/4354389/pexels-photo-4354389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "description" : "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
 },{
-    "id": "101",
-    "imageURL": "URL",
+    "id": "102",
+    "imageURL": "https://images.pexels.com/photos/318391/pexels-photo-318391.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "description" : "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
 },{
-    "id": "101",
-    "imageURL": "URL",
+    "id": "103",
+    "imageURL": "https://images.pexels.com/photos/318388/pexels-photo-318388.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "description" : "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
 },{
-    "id": "101",
-    "imageURL": "URL",
+    "id": "104",
+    "imageURL": "https://images.pexels.com/photos/2954199/pexels-photo-2954199.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "description" : "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
 },{
-    "id": "101",
-    "imageURL": "URL",
+    "id": "105",
+    "imageURL": "https://images.pexels.com/photos/4048182/pexels-photo-4048182.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "description" : "Lorem Ipsum has been the industry\’s \nstandard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make."
 }]
 
 export const CAROUSEL_HOME_BOTTOM_ARRAY = [{
-    "id": "101",
-    "imageURL": "URL",
+    "id": "201",
+    "imageURL": "https://images.pexels.com/photos/4048182/pexels-photo-4048182.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "description" : "Printer took a galley of type and scrambled it\nto make."
 },{
-    "id": "101",
-    "imageURL": "URL",
+    "id": "202",
+    "imageURL": "https://images.pexels.com/photos/318388/pexels-photo-318388.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "description" : "Printer took a galley of type and scrambled it\nto make."
 },{
-    "id": "101",
-    "imageURL": "URL",
+    "id": "203",
+    "imageURL": "https://images.pexels.com/photos/2954199/pexels-photo-2954199.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "description" : "Printer took a galley of type and scrambled it\nto make."
 },{
-    "id": "101",
-    "imageURL": "URL",
+    "id": "204",
+    "imageURL": "https://images.pexels.com/photos/4354389/pexels-photo-4354389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "description" : "Printer took a galley of type and scrambled it\nto make."
 },{
-    "id": "101",
-    "imageURL": "URL",
+    "id": "205",
+    "imageURL": "https://images.pexels.com/photos/318391/pexels-photo-318391.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "description" : "Printer took a galley of type and scrambled it\nto make."
 }]
