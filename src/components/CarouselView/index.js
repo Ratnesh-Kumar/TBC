@@ -78,7 +78,7 @@ export default class CarouselView extends Component {
                 <View style={{ backgroundColor: colorConstants.GRAY_LIGHT_COLOR, borderRadius: 20 }}>
                     <View style={{ height: 280, justifyContent: 'center', alignItems: 'center' }}>
                         <Image source={{ uri: item.imageURL }}
-                            style={{ height: 280, width: 250, resizeMode: 'contain' }}
+                            style={{ height: 280, width: 250, resizeMode: 'cover', borderRadius: 20 }}
                         />
                         <View style={{ position: 'absolute', top: 10, right: 10 }}>
                             <TouchableOpacity onPress={ async() => {
@@ -95,7 +95,7 @@ export default class CarouselView extends Component {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0, backgroundColor: (this.props.darkTheme) ? colorConstants.GREY_DARK_COLOR_A : colorConstants.GRAY_MEDIUM_COLOR, padding: 10, borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}>
+                    <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0,opacity: 0.90, backgroundColor: (this.props.darkTheme) ? colorConstants.GREY_DARK_COLOR_A : colorConstants.GRAY_MEDIUM_COLOR, padding: 10, borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}>
                         <Text style={{ fontSize: 11, textAlign: "center", color: (this.props.darkTheme) ? colorConstants.WHITE_COLOR : colorConstants.BLACK_COLOR }}>
                             {item.description}
                         </Text>
