@@ -109,7 +109,7 @@ export default styles = StyleSheet.create({
     height: constants.SCREEN_HEIGHT / 3, justifyContent: 'center', alignItems: 'center',
   },
   loginTitleText: {
-    fontSize: 50, color: colorConstant.TBC_COLOR, paddingLeft: 5, height: 50
+    fontSize: 50, color: colorConstant.TBC_COLOR, paddingLeft: 5, height: 55
   },
   loginSumbitButtonView: {
     paddingLeft: 30, paddingRight: 30, marginTop: 30
