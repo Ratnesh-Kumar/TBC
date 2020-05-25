@@ -151,7 +151,7 @@ export default styles = StyleSheet.create({
   firstFieldView: {
     height: 58,
     borderColor: 'black',
-    borderRadius: 5,
+    //borderRadius: 5,
     borderWidth: 1,
     //backgroundColor: 'yellow'
   },
@@ -162,7 +162,7 @@ export default styles = StyleSheet.create({
     height:58,
     marginTop: 20,
     borderColor: 'black',
-    borderRadius: 5,
+    //borderRadius: 5,
     borderWidth: 1,
   },
   });

@@ -200,6 +200,7 @@
     <orderEntry type="module" module-name="android-bugsnag-react-native" />
     <orderEntry type="module" module-name="react-native-google-analytics-bridge" />
     <orderEntry type="module" module-name="react-native-community_datetimepicker" />
+    <orderEntry type="module" module-name="react-native-add-calendar-event" />
     <orderEntry type="module" module-name="android-react-native-cardview" />
     <orderEntry type="module" module-name="android-react-native-fbsdk" />
     <orderEntry type="module" module-name="android-react-native-gesture-handler" />
